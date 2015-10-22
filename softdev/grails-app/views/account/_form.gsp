@@ -2,6 +2,42 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
+	<label for="username">
+		<g:message code="account.username.label" default="Username" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="username" required="" value="${accountInstance?.username}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'password', 'error')} required">
+	<label for="password">
+		<g:message code="account.password.label" default="Password" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="password" required="" value="${accountInstance?.password}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'accountExpired', 'error')} ">
+	<label for="accountExpired">
+		<g:message code="account.accountExpired.label" default="Account Expired" />
+		
+	</label>
+	<g:checkBox name="accountExpired" value="${accountInstance?.accountExpired}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} ">
+	<label for="accountLocked">
+		<g:message code="account.accountLocked.label" default="Account Locked" />
+		
+	</label>
+	<g:checkBox name="accountLocked" value="${accountInstance?.accountLocked}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'approvedRequistion', 'error')} ">
 	<label for="approvedRequistion">
 		<g:message code="account.approvedRequistion.label" default="Approved Requistion" />
@@ -20,12 +56,39 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'barcode', 'error')} required">
+	<label for="barcode">
+		<g:message code="account.barcode.label" default="Barcode" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="barcode" required="" value="${accountInstance?.barcode}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'enabled', 'error')} ">
+	<label for="enabled">
+		<g:message code="account.enabled.label" default="Enabled" />
+		
+	</label>
+	<g:checkBox name="enabled" value="${accountInstance?.enabled}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'name', 'error')} required">
 	<label for="name">
 		<g:message code="account.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="name" required="" value="${accountInstance?.name}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'passwordExpired', 'error')} ">
+	<label for="passwordExpired">
+		<g:message code="account.passwordExpired.label" default="Password Expired" />
+		
+	</label>
+	<g:checkBox name="passwordExpired" value="${accountInstance?.passwordExpired}" />
 
 </div>
 
@@ -44,15 +107,6 @@
 </li>
 </ul>
 
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'role', 'error')} required">
-	<label for="role">
-		<g:message code="account.role.label" default="Role" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="role" required="" value="${accountInstance?.role}"/>
 
 </div>
 

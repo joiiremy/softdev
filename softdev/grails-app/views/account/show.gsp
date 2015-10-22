@@ -23,6 +23,42 @@
 			</g:if>
 			<ol class="property-list account">
 			
+				<g:if test="${accountInstance?.username}">
+				<li class="fieldcontain">
+					<span id="username-label" class="property-label"><g:message code="account.username.label" default="Username" /></span>
+					
+						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${accountInstance}" field="username"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${accountInstance?.password}">
+				<li class="fieldcontain">
+					<span id="password-label" class="property-label"><g:message code="account.password.label" default="Password" /></span>
+					
+						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${accountInstance}" field="password"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${accountInstance?.accountExpired}">
+				<li class="fieldcontain">
+					<span id="accountExpired-label" class="property-label"><g:message code="account.accountExpired.label" default="Account Expired" /></span>
+					
+						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${accountInstance?.accountExpired}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${accountInstance?.accountLocked}">
+				<li class="fieldcontain">
+					<span id="accountLocked-label" class="property-label"><g:message code="account.accountLocked.label" default="Account Locked" /></span>
+					
+						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${accountInstance?.accountLocked}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${accountInstance?.approvedRequistion}">
 				<li class="fieldcontain">
 					<span id="approvedRequistion-label" class="property-label"><g:message code="account.approvedRequistion.label" default="Approved Requistion" /></span>
@@ -30,6 +66,24 @@
 						<g:each in="${accountInstance.approvedRequistion}" var="a">
 						<span class="property-value" aria-labelledby="approvedRequistion-label"><g:link controller="requistion" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${accountInstance?.barcode}">
+				<li class="fieldcontain">
+					<span id="barcode-label" class="property-label"><g:message code="account.barcode.label" default="Barcode" /></span>
+					
+						<span class="property-value" aria-labelledby="barcode-label"><g:fieldValue bean="${accountInstance}" field="barcode"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${accountInstance?.enabled}">
+				<li class="fieldcontain">
+					<span id="enabled-label" class="property-label"><g:message code="account.enabled.label" default="Enabled" /></span>
+					
+						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${accountInstance?.enabled}" /></span>
 					
 				</li>
 				</g:if>
@@ -43,6 +97,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${accountInstance?.passwordExpired}">
+				<li class="fieldcontain">
+					<span id="passwordExpired-label" class="property-label"><g:message code="account.passwordExpired.label" default="Password Expired" /></span>
+					
+						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${accountInstance?.passwordExpired}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${accountInstance?.requistions}">
 				<li class="fieldcontain">
 					<span id="requistions-label" class="property-label"><g:message code="account.requistions.label" default="Requistions" /></span>
@@ -50,15 +113,6 @@
 						<g:each in="${accountInstance.requistions}" var="r">
 						<span class="property-value" aria-labelledby="requistions-label"><g:link controller="requistion" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${accountInstance?.role}">
-				<li class="fieldcontain">
-					<span id="role-label" class="property-label"><g:message code="account.role.label" default="Role" /></span>
-					
-						<span class="property-value" aria-labelledby="role-label"><g:fieldValue bean="${accountInstance}" field="role"/></span>
 					
 				</li>
 				</g:if>

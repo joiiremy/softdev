@@ -115,3 +115,43 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.swd.Account'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.swd.AccountRole'
+grails.plugin.springsecurity.authority.className = 'com.swd.Role'
+
+grails.plugin.springsecurity.rejectIfNoRule = true
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+grails.plugin.springsecurity.interceptUrlMap = [
+   '/':                ['permitAll'],
+   '/error':           ['permitAll'],
+   '/index':           ['permitAll'],
+   '/index.gsp':       ['permitAll'],
+   '/account/**':       ['permitAll'],
+   '/home/user/**':       ['permitAll'],
+   '/home/admin/**':       ['permitAll'],
+   '/requistionFront/**/**':       ['permitAll'],
+   '/equipment/**':       ['permitAll'],
+   '/requistion/**':       ['permitAll'],
+   '/assets/**':       ['permitAll'],
+   '/**/js/**':        ['permitAll'],
+   '/**/css/**':       ['permitAll'],
+   '/**/images/**':    ['permitAll'],
+   '/**/favicon.ico':  ['permitAll'],
+   '/login/**':        ['permitAll'],
+   '/logout/**':       ['permitAll']
+]
+
+// grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+// 	'/':                ['permitAll'],
+// 	'/index':           ['permitAll'],
+// 	'/index.gsp':       ['permitAll'],
+// 	'/assets/**':       ['permitAll'],
+// 	'/**/js/**':        ['permitAll'],
+// 	'/**/css/**':       ['permitAll'],
+// 	'/**/images/**':    ['permitAll'],
+// 	'/**/favicon.ico':  ['permitAll']
+// ]
+

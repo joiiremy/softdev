@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'barcode', 'error')} required">
+	<label for="barcode">
+		<g:message code="equipment.barcode.label" default="Barcode" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="barcode" required="" value="${equipmentInstance?.barcode}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'price', 'error')} required">
 	<label for="price">
 		<g:message code="equipment.price.label" default="Price" />
@@ -35,15 +44,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="title" required="" value="${equipmentInstance?.title}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'total', 'error')} required">
-	<label for="total">
-		<g:message code="equipment.total.label" default="Total" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="total" value="${fieldValue(bean: equipmentInstance, field: 'total')}" required=""/>
 
 </div>
 

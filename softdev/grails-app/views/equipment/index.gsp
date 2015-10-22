@@ -28,11 +28,11 @@
 					
 						<g:sortableColumn property="amount" title="${message(code: 'equipment.amount.label', default: 'Amount')}" />
 					
+						<g:sortableColumn property="barcode" title="${message(code: 'equipment.barcode.label', default: 'Barcode')}" />
+					
 						<g:sortableColumn property="price" title="${message(code: 'equipment.price.label', default: 'Price')}" />
 					
 						<g:sortableColumn property="title" title="${message(code: 'equipment.title.label', default: 'Title')}" />
-					
-						<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'Total')}" />
 					
 					</tr>
 				</thead>
@@ -44,11 +44,11 @@
 					
 						<td>${fieldValue(bean: equipmentInstance, field: "amount")}</td>
 					
+						<td>${fieldValue(bean: equipmentInstance, field: "barcode")}</td>
+					
 						<td>${fieldValue(bean: equipmentInstance, field: "price")}</td>
 					
 						<td>${fieldValue(bean: equipmentInstance, field: "title")}</td>
-					
-						<td>${fieldValue(bean: equipmentInstance, field: "total")}</td>
 					
 					</tr>
 				</g:each>

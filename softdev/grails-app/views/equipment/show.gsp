@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${equipmentInstance?.barcode}">
+				<li class="fieldcontain">
+					<span id="barcode-label" class="property-label"><g:message code="equipment.barcode.label" default="Barcode" /></span>
+					
+						<span class="property-value" aria-labelledby="barcode-label"><g:fieldValue bean="${equipmentInstance}" field="barcode"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${equipmentInstance?.price}">
 				<li class="fieldcontain">
 					<span id="price-label" class="property-label"><g:message code="equipment.price.label" default="Price" /></span>
@@ -55,15 +64,6 @@
 					<span id="title-label" class="property-label"><g:message code="equipment.title.label" default="Title" /></span>
 					
 						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${equipmentInstance}" field="title"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${equipmentInstance?.total}">
-				<li class="fieldcontain">
-					<span id="total-label" class="property-label"><g:message code="equipment.total.label" default="Total" /></span>
-					
-						<span class="property-value" aria-labelledby="total-label"><g:fieldValue bean="${equipmentInstance}" field="total"/></span>
 					
 				</li>
 				</g:if>

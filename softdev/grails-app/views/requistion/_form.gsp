@@ -52,7 +52,7 @@
 		<g:message code="requistion.requistionDate.label" default="Requistion Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<joda:datePicker class="form-control" name="requistionDate" /> 
+	
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="requistion.returnDate.label" default="Return Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<joda:datePicker class="form-control" name="returnDate" /> 
+	
 
 </div>
 
