@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>หน้ายืมของ</title>
+		<title>คืนรายการอุปกรณ์</title>
 	</head>
 	<body>
 	

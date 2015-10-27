@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>คืนสินค้า</title>
+		<title>ยืมสินค้า</title>
 	</head>
 	<body>
 			หน้ายืมของ ของผู้ใช้ <br>
