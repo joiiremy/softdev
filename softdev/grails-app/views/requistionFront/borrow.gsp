@@ -11,6 +11,10 @@
 		กดแล้วไปที่หน้า สรุปการยืม <br>
 		ประวัติ <br>
 
+		
+		<div class="row">
+ 			<div class="col-md-12"><center>ยืม</center></div>
+		</div>
 		<g:link controller="requistionFront" action="summary">ยืนยันการยืม</g:link>
 	</body>
 </html>
