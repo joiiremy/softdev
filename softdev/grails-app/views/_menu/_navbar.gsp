@@ -27,16 +27,16 @@
 
       %{-- CHECKOUT --}%
       <g:if test="${ params.controller == 'requistionFront'}">
-        <li class="${ params.controller == "home" ? 'active' : '' }" >
-          <a href="${createLink(controller: 'Home', action: 'index')}"> ยืม
+        <li class="${ params.action == "borrow" ? 'active' : '' }" >
+          <a href="${createLink(controller: 'requistionFront', action: 'borrow')}"> ยืม
           </a>
         </li> 
-        <li class="${ params.controller == "checkoutQuestionSet" ? 'active' : '' }">
-          <a href="${createLink(controller: 'CheckoutQuestionSet', action: 'index')}"> คืน
+        <li class="${ params.action == "returns" ? 'active' : '' }">
+          <a href="${createLink(controller: 'requistionFront', action: 'returns')}"> คืน
           </a>
         </li> 
-        <li class="${ params.controller == "checkoutQuestion" ? 'active' : '' }">
-          <a href="${createLink(controller: 'CheckoutQuestion', action: 'index')}">
+        <li class="${ params.action == "history" ? 'active' : '' }">
+          <a href="${createLink(controller: 'requistionFront', action: 'history')}">
             ประวัติ        
           </a>
         </li>
