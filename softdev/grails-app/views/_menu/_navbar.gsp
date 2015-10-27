@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-  	<div class="navbar-header">
+    <div class="navbar-header">
 
       <a class="navbar-brand" href="${createLink(uri: '/')}">COE</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -18,31 +18,29 @@
       <li class="dropdown">
             <a href="${createLink(uri: '/')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MENU <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-             %{--  <li><a href="${createLink(controller: 'Assignment', action: 'index')}">Assignments/Questions</a></li>
-              <li><a href="${createLink(controller: 'Student', action: 'index')}">Students/Sections</a></li> --}%
+              <li><a href="${createLink(controller: 'Assignment', action: 'index')}">Assignments/Questions</a></li>
+              <li><a href="${createLink(controller: 'Home', action: 'index')}">Checkouts</a></li>
+              <li><a href="${createLink(controller: 'Student', action: 'index')}">Students/Sections</a></li>
             </ul>
       </li>
         %{-- </g:if> --}%
 
       %{-- CHECKOUT --}%
-      %{-- <g:if test="${ params.controller == 'checkoutQuestion'
-        ||  params.controller == 'checkoutQuestionSet'
-        ||  params.controller == 'home'}">
+      <g:if test="${ params.controller == 'requistionFront'}">
         <li class="${ params.controller == "home" ? 'active' : '' }" >
-          <a href="${createLink(controller: 'Home', action: 'index')}"> Check
+          <a href="${createLink(controller: 'Home', action: 'index')}"> ยืม
           </a>
         </li> 
         <li class="${ params.controller == "checkoutQuestionSet" ? 'active' : '' }">
-          <a href="${createLink(controller: 'CheckoutQuestionSet', action: 'index')}"> CheckOutQuestionSet
+          <a href="${createLink(controller: 'CheckoutQuestionSet', action: 'index')}"> คืน
           </a>
         </li> 
         <li class="${ params.controller == "checkoutQuestion" ? 'active' : '' }">
           <a href="${createLink(controller: 'CheckoutQuestion', action: 'index')}">
-            CheckOutQuestion        
+            ประวัติ        
           </a>
         </li>
-      </g:if> --}%
-
+      </g:if>
 
   </ul>
   <ul class="nav navbar-nav navbar-right">
