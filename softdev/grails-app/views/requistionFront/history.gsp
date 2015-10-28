@@ -9,6 +9,7 @@
 		<br>
 		${equipments.title}
 
+		${accounts.name}
 		<br>
 		<g:each in="${equipments}">
 			<p>equipments: ${it.title}</p>
@@ -28,12 +29,7 @@
 							สถานะใช้งาน:
 						</div>
 						<div class="col-xs-3">
-							<select class="form-control" placeholder=".col-xs-3">
-								<option>อาจารย์</option>
-								<option>บุคลากร</option>
-								<option>นักศึกษา</option>
-								<option>แม่บ้าน</option>
-							</select>
+							<g:select  class="form-control" placeholder=".col-xs-3" name="user" from="${accounts}"   	 noSelection="['':'-Choose your name-']"/>
 						</div>
 					</div>
 				</div>

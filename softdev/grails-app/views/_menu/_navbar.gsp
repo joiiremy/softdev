@@ -27,8 +27,8 @@
 
       %{-- CHECKOUT --}%
       <g:if test="${ params.controller == 'requistionFront'}">
-        <li class="${ params.action == "borrow" ? 'active' : '' }" >
-          <a href="${createLink(controller: 'requistionFront', action: 'borrow')}"> ยืม
+        <li class="${ params.controller == "create" ? 'active' : '' }" >
+          <a href="${createLink(controller: 'requistion', action: 'create')}"> ยืม
           </a>
         </li> 
         <li class="${ params.action == "returns" ? 'active' : '' }">
