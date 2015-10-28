@@ -17,10 +17,12 @@
 			</ul>
 		</div>
 		<div id="show-requistion" class="content scaffold-show" role="main">
+
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			<table class="table table-bordered">
 			<ol class="property-list requistion">
 			
 				<g:if test="${requistionInstance?.amount}">
@@ -89,6 +91,7 @@
 				</g:if>
 			
 			</ol>
+			</table>
 			<g:form url="[resource:requistionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${requistionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
