@@ -5,6 +5,16 @@
 		<title>ประวัติ</title>
 	</head>
 	<body>
+		${requistionList}
+		<br>
+		${equipments.title}
+
+		<br>
+		<g:each in="${equipments}">
+			<p>equipments: ${it.title}</p>
+		</g:each>
+
+
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">

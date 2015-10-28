@@ -4,5 +4,7 @@ class RequistionFrontController {
 
     def borrow() { }
     def returns() { }
-    def history() { }
+    def history() { 
+    	[requistionList : Requistion.list(), equipments:Equipment.list() ]
+    }
 }
