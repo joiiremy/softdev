@@ -21,6 +21,7 @@ class RequistionController {
 
     def create() {
         respond new Requistion(params)
+        respond model:[requistionList : Requistion.list(), equipments:Equipment.list() ,accounts : Account.list()]
     }
 
     @Transactional

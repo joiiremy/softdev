@@ -11,6 +11,14 @@
 	<title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 <body>
+	%{-- <a href="#create-requistion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/>
+	</a>
+	<div class="nav" role="navigation">
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+			<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+		</ul>
+	</div> --}%
 	%{-- //////////////// from search /////////////// --}%
 	<div>
 		<div class="container">
@@ -68,31 +76,29 @@
 			</div> <br>
 		</div>
 	</form>
-	%{-- //////////////// from search /////////////// --}%
 </div>
-<div id="create-requistion" class="content scaffold-create" role="main">
-	<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-	<g:if test="${flash.message}">
-	<div class="message" role="status">${flash.message}</div>
-</g:if>
-<g:hasErrors bean="${requistionInstance}">
-<ul class="errors" role="alert">
-	<g:eachError bean="${requistionInstance}" var="error">
-	<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-</g:eachError>
+%{-- ////////////////end from search /////////////// --}%
+%{-- ////////////////end from create /////////////// --}%
+<center>
+	<div id="create-requistion" class="content scaffold-create" role="main">
+		<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+		<g:if test="${flash.message}">
+		<div class="message" role="status">${flash.message}</div>
+	</g:if>
+	<g:hasErrors bean="${requistionInstance}">
+	<ul class="errors" role="alert">
+		<g:eachError bean="${requistionInstance}" var="error">
+		<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+	</g:eachError>
 </ul>
 </g:hasErrors>
 <g:form url="[resource:requistionInstance, action:'save']" >
 <fieldset class="form">
 	<g:render template="form"/>
 </fieldset>
-<fieldset class="buttons">
-	<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-</fieldset>
-</g:form>
-</div>
+<!--/////////////////////// Modal ////////////////////////////////////////////////////////////////////////-->
 <center>
-	<!--/////////////////////// Modal ////////////////////////////////////////////////////////////////////////-->
+	
 	<button type="button" class="btn btn-default"data-toggle="modal" data-target="#myModal">ยืนยันการยืม
 	</button>
 	<div class="modal fade" id="myModal" role="dialog">
@@ -104,7 +110,9 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">ยืนยันการทำรายการ</h4>
 				</div>
+
 				<div class="modal-body">
+
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -143,17 +151,24 @@
 								<input id="remember" type="checkbox"> บันทึกรหัสผ่าน
 							</label>
 							<div class="modal-footer">
-								<g:link controller="requistionFront" action="summary" type="button" class="btn btn-default" >ยืนยัน</g:link>
-								<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+								<fieldset class="buttons">
+									<g:submitButton name="create" class="save" value="${message(code: 'default.button.submit_create.label', default: 'Create')}" />
+									<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+								</fieldset>
 							</div>
-
 						</fieldset>
 					</form>
 				</center>
 			</div>
 		</div>
 	</div>
-	%{-- end modal --}%
 </center>
+%{-- end modal --}%
+
+</g:form>
+</div>
+</center>
+%{-- ////////////////end from create /////////////// --}%
+
 </body>
 </html>
