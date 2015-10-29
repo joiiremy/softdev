@@ -2,15 +2,6 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'amount', 'error')} required">
-	<label for="amount">
-		<g:message code="requistion.amount.label" default="Amount" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="amount" type="number" value="${requistionInstance.amount}" required=""/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'approved', 'error')} ">
 	<label for="approved">
 		<g:message code="requistion.approved.label" default="Approved" />
@@ -38,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'equipments', 'error')} ">
-	<label for="equipments">
-		<g:message code="requistion.equipments.label" default="Equipments" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'matching', 'error')} ">
+	<label for="matching">
+		<g:message code="requistion.matching.label" default="Matching" />
 		
 	</label>
-	<g:select name="equipments" from="${com.swd.Equipment.list()}" multiple="multiple" optionKey="id" size="5" value="${requistionInstance?.equipments*.id}" class="many-to-many"/>
+	<g:select name="matching" from="${com.swd.Matching.list()}" multiple="multiple" optionKey="id" size="5" value="${requistionInstance?.matching*.id}" class="many-to-many"/>
 
 </div>
 
@@ -52,7 +43,7 @@
 		<g:message code="requistion.requistionDate.label" default="Requistion Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<joda:datePicker class="form-control" name="requistionDate" /> 
+	
 
 </div>
 
@@ -61,7 +52,7 @@
 		<g:message code="requistion.returnDate.label" default="Return Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<joda:datePicker class="form-control" name="returnDate" /> 
+	
 
 </div>
 

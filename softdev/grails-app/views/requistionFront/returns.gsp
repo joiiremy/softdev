@@ -11,6 +11,57 @@
 
 </head>
 <body>
+%{-- start search --}%
+			<form>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-2">
+							สถานะใช้งาน:
+						</div>
+						<div class="col-xs-3">
+							<select class="form-control" placeholder=".col-xs-3">
+								<option>อาจารย์</option>
+								<option>บุคลากร</option>
+								<option>นักศึกษา</option>
+								<option>แม่บ้าน</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-2">
+							รายชื่อ:
+						</div>
+						<div class="col-xs-3">
+							<select class="form-control" placeholder=".col-xs-3">
+								<option>อาจารย์</option>
+								<option>บุคลากร</option>
+								<option>นักศึกษา</option>
+								<option>แม่บ้าน</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-2">
+							ค้นหารายชื่อ:
+						</div>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" placeholder="ค้นหารายชื่อ">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class = "form-group">
+				<div class="row">
+					<center><button type="submit" class="btn btn-info" formaction="destination database">ค้นหา</button></center>
+				</div>
+			</div> <br>
+		</div>
+	</form>
+	%{-- end search --}%
 	<div class="container" >
 		<h2>หน้าคืนอุปกรณ์</h2>
 		<p>เลือกรายการที่ต้องการคืน จำนวน จากนั้นกดปุ่่มยืนยัน</p>            

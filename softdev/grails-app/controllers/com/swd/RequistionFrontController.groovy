@@ -5,6 +5,6 @@ class RequistionFrontController {
     def borrow() { }
     def returns() { }
     def history() { 
-    	[requistionList : Requistion.list(), equipments:Equipment.list() ,accounts : Account.list(), accountroles: AccountRole.list(),roles:Role.list()]
+    	[requistionList : Requistion.list(), matching: Matching.list() ,accounts : Account.list(), accountroles: AccountRole.list(),roles:Role.list()]
     }
 }

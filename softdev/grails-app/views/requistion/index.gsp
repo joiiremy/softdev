@@ -24,8 +24,6 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="amount" title="${message(code: 'requistion.amount.label', default: 'Amount')}" />
-					
 						<g:sortableColumn property="approved" title="${message(code: 'requistion.approved.label', default: 'Approved')}" />
 					
 						<th><g:message code="requistion.borrower.label" default="Borrower" /></th>
@@ -42,9 +40,7 @@
 				<g:each in="${requistionInstanceList}" status="i" var="requistionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "amount")}</g:link></td>
-					
-						<td><g:formatBoolean boolean="${requistionInstance.approved}" /></td>
+						<td><g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "approved")}</g:link></td>
 					
 						<td>${fieldValue(bean: requistionInstance, field: "borrower")}</td>
 					

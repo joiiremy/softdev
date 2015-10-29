@@ -4,8 +4,7 @@ import org.joda.time.LocalDate
 class Requistion {
 	LocalDate requistionDate
 	LocalDate returnDate
-	int amount
-	static hasMany = [equipments: Equipment] 
+	static hasMany = [matching : Matching] 
 	static belongsTo = [borrower: Account, endorser: Account]
 	Boolean approved
 
