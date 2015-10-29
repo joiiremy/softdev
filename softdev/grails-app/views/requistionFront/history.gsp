@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="demo">
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+			<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+			<!-- ui-select files -->
+			<script src="select.js"></script>
+			<link rel="stylesheet" href="select.css">
+
+
+			<!-- Select2 theme -->
+			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+
+			<!--
+			Selectize theme
+			Less versions are available at https://github.com/brianreavis/selectize.js/tree/master/dist/less
+			-->
+			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+			<!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap2.css"> -->
+			<!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.bootstrap3.css"> -->
+	<script src="demo.js"></script>
 	<head>
 		<meta name="layout" content="main"/>
 		<title>ประวัติ</title>
 	</head>
-	<body>
+	<body ng-controller="DemoCtrl">
 		${requistionList}
 		<br>
 		${equipments.title}
 
 		${accounts.name}
 		<br>
+		${roles}
 		<g:each in="${equipments}">
 			<p>equipments: ${it.title}</p>
 		</g:each>
@@ -29,7 +49,7 @@
 							สถานะใช้งาน:
 						</div>
 						<div class="col-xs-3">
-							<g:select  class="form-control" placeholder=".col-xs-3" name="user" from="${accounts}"   	 noSelection="['':'-Choose your name-']"/>
+							<g:select  class="form-control" placeholder=".col-xs-3" name="user" from="${roles}"   	 noSelection="['':'-Choose your name-']"/>
 						</div>
 					</div>
 				</div>
@@ -39,12 +59,7 @@
 							รายชื่อ:
 						</div>
 						<div class="col-xs-3">
-							<select class="form-control" placeholder=".col-xs-3">
-								<option>อาจารย์</option>
-								<option>บุคลากร</option>
-								<option>นักศึกษา</option>
-								<option>แม่บ้าน</option>
-							</select>
+							<g:select  class="form-control" placeholder=".col-xs-3" name="user" from="${accounts}"   	 noSelection="['':'-Choose your name-']"/>
 						</div>
 					</div>
 				</div>
@@ -53,9 +68,22 @@
 						<div class="col-xs-2">
 							ค้นหารายชื่อ:
 						</div>
-							<div class="col-xs-3">
+							%{-- <div class="col-xs-3">
 								<input type="text" class="form-control" placeholder="ค้นหารายชื่อ">
-							</div>
+							</div> --}%
+							<p>Selected: {{address.selected.formatted_address}}</p>
+								  <ui-select ng-model="address.selected"
+								             theme="bootstrap"
+								             ng-disabled="disabled"
+								             reset-search-input="false"
+								             style="width: 300px;">
+								    <ui-select-match placeholder="Enter an address...">{{$select.selected.formatted_address}}</ui-select-match>
+								    <ui-select-choices repeat="address in addresses track by $index"
+								             refresh="refreshAddresses($select.search)"
+								             refresh-delay="0">
+								      <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
+								    </ui-select-choices>
+								  </ui-select>
 						</div>
 					</div>
 				</div>
