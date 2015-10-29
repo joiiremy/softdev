@@ -31,11 +31,16 @@ fixture {
 	e10(Equipment, barcode:"0009",title:"ถุงดำ" ,amount:25	,price:49 ,description:"สำหรับใส่ขยะ")
 	e11(Equipment, barcode:"0010",title:"น้ำยาถูพื้น" ,amount:10	,price:75 ,description:"สำหรับขัดห้องน้ำ")
 	
+	m1(Matching, equipment: e01, amount: 2)
+	m2(Matching, equipment: e02, amount: 4)
+	m3(Matching, equipment: e03, amount: 1)
+	m4(Matching, equipment: e04, amount: 7)
 
-	r01(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),amount:2,equipments :[e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11],borrower: user01, endorser: user_admin, approved : true)
-	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),amount:2,equipments :[e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11],borrower: user02, endorser: user_admin, approved : true)
-	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),amount:2,equipments :[e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11],borrower: user03, endorser: user_admin, approved : true)
-	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),amount:2,equipments :[e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11],borrower: user04, endorser: user_admin, approved : true)
-	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),amount:2,equipments :[e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11],borrower: user05, endorser: user_admin, approved : true)
+
+	r01(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),matching: m1,borrower: user01, endorser: user_admin, approved : true)
+	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),matching: m2,borrower: user02, endorser: user_admin, approved : true)
+	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),matching: m3,borrower: user03, endorser: user_admin, approved : true)
+	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),matching: m4,borrower: user04, endorser: user_admin, approved : true)
+	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7),matching: m1,borrower: user05, endorser: user_admin, approved : true)
 	
 }

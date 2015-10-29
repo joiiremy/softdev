@@ -17,22 +17,11 @@
 			</ul>
 		</div>
 		<div id="show-requistion" class="content scaffold-show" role="main">
-
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table class="table table-bordered">
 			<ol class="property-list requistion">
-			
-				<g:if test="${requistionInstance?.amount}">
-				<li class="fieldcontain">
-					<span id="amount-label" class="property-label"><g:message code="requistion.amount.label" default="Amount" /></span>
-					
-						<span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${requistionInstance}" field="amount"/></span>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${requistionInstance?.approved}">
 				<li class="fieldcontain">
@@ -61,12 +50,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${requistionInstance?.equipments}">
+				<g:if test="${requistionInstance?.matching}">
 				<li class="fieldcontain">
-					<span id="equipments-label" class="property-label"><g:message code="requistion.equipments.label" default="Equipments" /></span>
+					<span id="matching-label" class="property-label"><g:message code="requistion.matching.label" default="Matching" /></span>
 					
-						<g:each in="${requistionInstance.equipments}" var="e">
-						<span class="property-value" aria-labelledby="equipments-label"><g:link controller="equipment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						<g:each in="${requistionInstance.matching}" var="m">
+						<span class="property-value" aria-labelledby="matching-label"><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -91,7 +80,6 @@
 				</g:if>
 			
 			</ol>
-			</table>
 			<g:form url="[resource:requistionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${requistionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
