@@ -26,13 +26,11 @@
 	<body ng-controller="DemoCtrl">
 		${requistionList}
 		<br>
-		${equipments.title}
-
 		${accounts.name}
 		<br>
 		${roles}
-		<g:each in="${equipments}">
-			<p>equipments: ${it.title}</p>
+		<g:each in="${matching}">
+			<p>matching: ${it.equipment.title}</p>
 		</g:each>
 
 
