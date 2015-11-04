@@ -1,49 +1,48 @@
-<%@ page import="com.swd.Equipment" %>
+<%@ page import="com.swd.Requistion" %>
 
 
 
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="equipment.description.label" default="Description" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'approved', 'error')} ">
+	<label for="approved">
+		<g:message code="requistion.approved.label" default="Approved" />
 		
 	</label>
-	<g:textField name="description" value="${equipmentInstance?.description}"/>
+	<g:checkBox name="approved" value="${requistionInstance?.approved}" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'amount', 'error')} required">
-	<label for="amount">
-		<g:message code="equipment.amount.label" default="Amount" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'borrower', 'error')} required">
+	<label for="borrower">
+		<g:message code="requistion.borrower.label" default="Borrower" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="amount" type="number" value="${equipmentInstance.amount}" required=""/>
+	<g:select id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" required="" value="${requistionInstance?.borrower?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'barcode', 'error')} required">
-	<label for="barcode">
-		<g:message code="equipment.barcode.label" default="Barcode" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'endorser', 'error')} required">
+	<label for="endorser">
+		<g:message code="requistion.endorser.label" default="Endorser" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="barcode" required="" value="${equipmentInstance?.barcode}"/>
+	<g:select id="endorser" name="endorser.id" from="${com.swd.Account.list()}" optionKey="id" required="" value="${requistionInstance?.endorser?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'price', 'error')} required">
-	<label for="price">
-		<g:message code="equipment.price.label" default="Price" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'requistionDate', 'error')} required">
+	<label for="requistionDate">
+		<g:message code="requistion.requistionDate.label" default="Requistion Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: equipmentInstance, field: 'price')}" required=""/>
-
+	<joda:datePicker class="form-control" name="returnDate" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'title', 'error')} required">
-	<label for="title">
-		<g:message code="equipment.title.label" default="Title" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'returnDate', 'error')} required">
+	<label for="returnDate">
+		<g:message code="requistion.returnDate.label" default="Return Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="title" required="" value="${equipmentInstance?.title}"/>
+	<joda:datePicker class="form-control" name="returnDate" />
 
 </div>
 
