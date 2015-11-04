@@ -50,12 +50,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${requistionInstance?.matching}">
+				<g:if test="${requistionInstance?.matchings}">
 				<li class="fieldcontain">
-					<span id="matching-label" class="property-label"><g:message code="requistion.matching.label" default="Matching" /></span>
+					<span id="matchings-label" class="property-label"><g:message code="requistion.matchings.label" default="Matchings" /></span>
 					
-						<g:each in="${requistionInstance.matching}" var="m">
-						<span class="property-value" aria-labelledby="matching-label"><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						<g:each in="${requistionInstance.matchings}" var="m">
+						<span class="property-value" aria-labelledby="matchings-label"><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

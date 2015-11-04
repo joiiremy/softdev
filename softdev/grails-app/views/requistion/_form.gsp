@@ -29,12 +29,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'matching', 'error')} ">
-	<label for="matching">
-		<g:message code="requistion.matching.label" default="Matching" />
+<div class="fieldcontain ${hasErrors(bean: requistionInstance, field: 'matchings', 'error')} ">
+	<label for="matchings">
+		<g:message code="requistion.matchings.label" default="Matchings" />
 		
 	</label>
-	<g:select name="matching" from="${com.swd.Matching.list()}" multiple="multiple" optionKey="id" size="5" value="${requistionInstance?.matching*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${requistionInstance?.matchings?}" var="m">
+    <li><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="matching" action="create" params="['requistion.id': requistionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'matching.label', default: 'Matching')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 

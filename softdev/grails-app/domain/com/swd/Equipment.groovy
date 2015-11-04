@@ -6,7 +6,8 @@ class Equipment {
 	int amount
 	Double price
 	String description
-
+	static hasMany = [matchings: Matching]
+	
     static constraints = {
     	description nullable: true
     }

@@ -15,9 +15,9 @@ class Account implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 
-	static hasMany = [requistions: Requistion, approvedRequistion: Requistion]
+	static hasMany = [requistions: Requistion, approvedRequistions: Requistion]
 	static mappedBy = [requistions: 'borrower',
-                       approvedRequistion: 'endorser']
+                       approvedRequistions: 'endorser']
 
 	Account(String username, String password) {
 		this()

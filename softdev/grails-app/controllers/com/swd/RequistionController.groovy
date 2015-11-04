@@ -21,7 +21,6 @@ class RequistionController {
 
     def create() {
         respond new Requistion(params)
-        [requistionList : Requistion.list(), matching: Matching.list() ,accounts : Account.list()]
     }
 
     @Transactional
