@@ -6,6 +6,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'requistion.label', default: 'Requistion')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+
 	</head>
 	<body>
 		<a href="#list-requistion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -58,5 +59,6 @@
 				<g:paginate total="${requistionInstanceCount ?: 0}" />
 			</div>
 		</div>
+		
 	</body>
 </html>

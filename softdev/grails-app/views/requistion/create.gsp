@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html >
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'requistion.label', default: 'Requistion')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
-	<body>
-		<a href="#create-requistion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<body >
+		<div ng-app="app.requistion">
+			<div ng-controller="requistion">
+				<a href="#create-requistion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -34,5 +36,10 @@
 				</fieldset>
 			</g:form>
 		</div>
+
+
+			</div>
+		</div>
+		
 	</body>
 </html>
