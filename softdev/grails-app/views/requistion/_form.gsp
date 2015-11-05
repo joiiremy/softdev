@@ -15,7 +15,7 @@
 		<g:message code="requistion.borrower.label" default="Borrower" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select class="chosen-select many-to-one" id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" optionValue="name" required="" value="${requistionInstance?.borrower?.id}" />
+	<g:select class="chosen-select many-to-one" id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" optionValue="name" required="" style="width:350px;" value="${requistionInstance?.borrower?.id}" />
 
 </div>
 
@@ -25,25 +25,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 
-	<g:select class="form-control" id="endorser" name="endorser.id" from="${com.swd.Account.list()}" optionKey="id" required="" value="${requistionInstance?.endorser?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'matchings', 'error')} ">
-	<label for="matchings">
-		<g:message code="requistion.matchings.label" default="Matchings" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${requistionInstance?.matchings?}" var="m">
-    <li><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="matching" action="create" params="['requistion.id': requistionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'matching.label', default: 'Matching')])}</g:link>
-</li>
-</ul>
-
+	<g:select class="chosen-select many-to-one" id="endorser" name="endorser.id" from="${com.swd.Account.list()}" optionKey="id" required="name"  style="width:350px;" value="${requistionInstance?.endorser?.id}" />
 
 </div>
 
@@ -53,8 +35,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<joda:datePicker class="form-control" name="requistionDate" />
-	
-
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'returnDate', 'error')} required">
@@ -72,3 +52,42 @@
 	});
 </script>
 
+<div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'matchings', 'error')} ">
+	<label for="matchings">
+		<g:message code="requistion.matchings.label" default="Matchings" />		
+	</label>
+<ul class="one-to-many">
+<g:each in="${requistionInstance?.matchings?}"" var="m">
+    <li><g:link controller="matching" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="matching" action="create" params="['requistion.id': requistionInstance?.id]" class="glyphicon glyphicon-plus">${message(code: 'default.add.label', args: [message(code: 'matching.label', default: 'Matching')])}</g:link>
+</li>
+
+<div id="list-matching" class="container content scaffold-list">
+			<div class="col-md-4">
+			<table class = "table " >
+			<thead>
+					<tr >
+						<g:sortableColumn property="amount" title="${message(code: 'matching.amount.label', default: 'Amount')}" />
+						<th><g:message code="matching.equipment.label" default="Equipment" /></th>
+						<th><g:message code="matching.requistion.label" default="Requistion" /></th>
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${matchingInstanceList}" status="i" var="matchingInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'} .col-md-4">
+						<td><g:link action="show" id="${matchingInstance.id}">${fieldValue(bean: matchingInstance, field: "amount")}</g:link></td>
+						<td >${fieldValue(bean: matchingInstance, field: "equipment.title")}</td>
+						<td>${fieldValue(bean: matchingInstance, field: "requistion")}</td>
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+			<div class="pagination">
+				<g:paginate total="${matchingInstanceCount ?: 0}" />
+			</div>
+		</div>
+</div>
+</ul>
+</div>

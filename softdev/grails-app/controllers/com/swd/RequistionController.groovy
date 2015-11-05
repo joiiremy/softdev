@@ -17,10 +17,12 @@ class RequistionController {
 
     def show(Requistion requistionInstance) {
         respond requistionInstance
+        
     }
 
     def create() {
         respond new Requistion(params)
+        respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
     }
 
     @Transactional
