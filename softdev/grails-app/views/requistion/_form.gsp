@@ -10,13 +10,12 @@
 	<g:checkBox name="approved" value="${requistionInstance?.approved}" />
 
 </div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'borrower', 'error')} required">
 	<label for="borrower">
 		<g:message code="requistion.borrower.label" default="Borrower" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" required="" value="${requistionInstance?.borrower?.id}" class="many-to-one"/>
+	<g:select class="chosen-select many-to-one" id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" optionValue="name" required="" value="${requistionInstance?.borrower?.id}" />
 
 </div>
 
@@ -25,18 +24,6 @@
 		<g:message code="requistion.endorser.label" default="Endorser" />
 		<span class="required-indicator">*</span>
 	</label>
-	  <ui-select ng-model="endorser"
-             theme="bootstrap"
-             
-             reset-search-input="false"
-             style="width: 300px;">
-
-    <ui-select-match placeholder="Enter an address...">{{$select.selected.name}}</ui-select-match>
-    <ui-select-choices repeat="account in accounts | filter: $select.search track by $index">
-      <div ng-bind-html="account.name | highlight: $select.search"></div>
-    </ui-select-choices>
-
-  </ui-select>
 
 	<g:select class="form-control" id="endorser" name="endorser.id" from="${com.swd.Account.list()}" optionKey="id" required="" value="${requistionInstance?.endorser?.id}" class="many-to-one"/>
 
@@ -75,19 +62,13 @@
 		<g:message code="requistion.returnDate.label" default="Return Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	
 	<joda:datePicker class="form-control" name="returnDate" />
 
 </div>
 
 <script type="text/javascript">
-<g:applyCodec encodeAs="none">
-	angular.module('app.requistion', ['ui.select', 'ngSanitize']).
-	controller('requistion', ['$scope', function($scope){
-		
-		$scope.accounts = ${Account.list() as JSON};
-		console.log($scope.account);
-	}]);
-</g:applyCodec>
+	$( document ).ready(function() {
+		$(".chosen-select").chosen({no_results_text: "Oops, nothing found!"}); 
+	});
 </script>
 

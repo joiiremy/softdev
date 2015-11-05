@@ -9,31 +9,25 @@
 
 	</head>
 	<body>
-		<a href="#list-requistion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		<g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 		<div id="list-requistion" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-striped">
 			<thead>
 					<tr>
+						<g:sortableColumn property="requistionDate" title="${message(code: 'requistion.requistionDate.label', default: 'Requistion Date')}" />
 					
-						<g:sortableColumn property="approved" title="${message(code: 'requistion.approved.label', default: 'Approved')}" />
+						<g:sortableColumn property="returnDate" title="${message(code: 'requistion.returnDate.label', default: 'Return Date')}" />
 					
 						<th><g:message code="requistion.borrower.label" default="Borrower" /></th>
 					
 						<th><g:message code="requistion.endorser.label" default="Endorser" /></th>
 					
-						<g:sortableColumn property="requistionDate" title="${message(code: 'requistion.requistionDate.label', default: 'Requistion Date')}" />
+						<g:sortableColumn property="approved" title="${message(code: 'requistion.approved.label', default: 'Approved')}" />
 					
-						<g:sortableColumn property="returnDate" title="${message(code: 'requistion.returnDate.label', default: 'Return Date')}" />
 					
 					</tr>
 				</thead>
@@ -41,15 +35,15 @@
 				<g:each in="${requistionInstanceList}" status="i" var="requistionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "approved")}</g:link></td>
+						<td>${fieldValue(bean: requistionInstance, field: "requistionDate")}</td>
 					
+						<td>${fieldValue(bean: requistionInstance, field: "returnDate")}</td>
 						<td>${fieldValue(bean: requistionInstance, field: "borrower")}</td>
 					
 						<td>${fieldValue(bean: requistionInstance, field: "endorser")}</td>
 					
-						<td>${fieldValue(bean: requistionInstance, field: "requistionDate")}</td>
+						<td><g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "approved")}</g:link></td>
 					
-						<td>${fieldValue(bean: requistionInstance, field: "returnDate")}</td>
 					
 					</tr>
 				</g:each>

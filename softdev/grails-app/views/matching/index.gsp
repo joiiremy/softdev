@@ -24,11 +24,23 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="amount" title="${message(code: 'matching.amount.label', default: 'Amount')}" />
+					
+						<th><g:message code="matching.equipment.label" default="Equipment" /></th>
+					
+						<th><g:message code="matching.requistion.label" default="Requistion" /></th>
+					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${matchingInstanceList}" status="i" var="matchingInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${matchingInstance.id}">${fieldValue(bean: matchingInstance, field: "amount")}</g:link></td>
+					
+						<td>${fieldValue(bean: matchingInstance, field: "equipment")}</td>
+					
+						<td>${fieldValue(bean: matchingInstance, field: "requistion")}</td>
 					
 					</tr>
 				</g:each>

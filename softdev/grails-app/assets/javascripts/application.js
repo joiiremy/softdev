@@ -6,9 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
-//= require angular.min
-//= require angular-sanitize.min
-//= require select
+//= require chosen.jquery.min
 //= require_tree .
 //= require_self
 

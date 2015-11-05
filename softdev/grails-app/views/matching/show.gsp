@@ -23,6 +23,33 @@
 			</g:if>
 			<ol class="property-list matching">
 			
+				<g:if test="${matchingInstance?.amount}">
+				<li class="fieldcontain">
+					<span id="amount-label" class="property-label"><g:message code="matching.amount.label" default="Amount" /></span>
+					
+						<span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${matchingInstance}" field="amount"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${matchingInstance?.equipment}">
+				<li class="fieldcontain">
+					<span id="equipment-label" class="property-label"><g:message code="matching.equipment.label" default="Equipment" /></span>
+					
+						<span class="property-value" aria-labelledby="equipment-label"><g:link controller="equipment" action="show" id="${matchingInstance?.equipment?.id}">${matchingInstance?.equipment?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${matchingInstance?.requistion}">
+				<li class="fieldcontain">
+					<span id="requistion-label" class="property-label"><g:message code="matching.requistion.label" default="Requistion" /></span>
+					
+						<span class="property-value" aria-labelledby="requistion-label"><g:link controller="requistion" action="show" id="${matchingInstance?.requistion?.id}">${matchingInstance?.requistion?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:matchingInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

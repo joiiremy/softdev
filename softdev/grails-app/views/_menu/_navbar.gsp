@@ -18,16 +18,16 @@
       <li class="dropdown">
             <a href="${createLink(uri: '/')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MENU <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="${createLink(controller: 'Assignment', action: 'index')}">Assignments/Questions</a></li>
-              <li><a href="${createLink(controller: 'Home', action: 'index')}">Checkouts</a></li>
-              <li><a href="${createLink(controller: 'Student', action: 'index')}">Students/Sections</a></li>
+              <li><a href="${createLink(controller: 'requistion', action: 'create')}">ยืม</a></li>
+              <li><a href="${createLink(controller: 'requistionFront', action: 'returns')}">คืน</a></li>
+              <li><a href="${createLink(controller: 'requistionFront', action: 'history')}">ประวัติ</a></li>
             </ul>
       </li>
         %{-- </g:if> --}%
 
       %{-- CHECKOUT --}%
-      <g:if test="${ params.controller == 'requistionFront'}">
-        <li class="${ params.controller == "create" ? 'active' : '' }" >
+      <g:if test="${ params.controller == 'requistionFront' || params.controller == 'requistion' }">
+        <li class="${ params.action == "create" ? 'active' : '' }" >
           <a href="${createLink(controller: 'requistion', action: 'create')}"> ยืม
           </a>
         </li> 
