@@ -7,36 +7,23 @@ import grails.transaction.Transactional
 class RequistionFrontController {
 
     def borrow() {
-    respond new Requistion(params) }
+
+    }
     def returns() { }
     def history() { 
-    	[requistionList : Requistion.list(), matching: Matching.list() ,accounts : Account.list(), accountroles: AccountRole.list(),roles:Role.list()]
-    }
-    @Transactional
-    def save(Requistion requistionInstance) {
-        if (requistionInstance == null) {
-            notFound()
-            return
+    	def accountId
+        def requistionList = Requistion.createCriteria().list{
+        	if(params.long("accountId")){
+	    		accountId = params.accountId as Long
+	    		borrower{
+		        	idEq accountId
+		        }
+    		}		
         }
-
-        if (requistionInstance.hasErrors()) {
-            respond requistionInstance.errors, view:'borrow'
-            return
-        }
-
-        requistionInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'requistion.label', default: 'Requistion'), requistionInstance.id])
-                redirect requistionInstance
-            }
-            '*' { respond requistionInstance, [status: CREATED] }
-        }
+        // def checkoutQuestionInstanceCount = CheckoutQuestion.createCriteria().list(query).size()
+        
+    	[requistionList : requistionList, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
     }
 }
-// def create() {
-//         respond new Requistion(params)
-//     }
 
     

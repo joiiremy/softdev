@@ -37,10 +37,12 @@ fixture {
 	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user04, endorser: user_admin, approved : true)
 	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user05, endorser: user_admin, approved : true)
 	
-	m1(Matching, equipment: e01,requistion: r01, amount: 2)
-	m2(Matching, equipment: e02,requistion: r02, amount: 4)
-	m3(Matching, equipment: e03,requistion: r03, amount: 1)
-	m4(Matching, equipment: e04,requistion: r04, amount: 7)
+	m01(Matching, equipment: e01,requistion: r01, amount: 2)
+	m01_2(Matching, equipment: e01,requistion: r02, amount: 4)
+	m01_3(Matching, equipment: e01,requistion: r03, amount: 1)
+	m02(Matching, equipment: e02,requistion: r02, amount: 4)
+	m03(Matching, equipment: e03,requistion: r03, amount: 1)
+	m04(Matching, equipment: e04,requistion: r04, amount: 7)
 
 
 	

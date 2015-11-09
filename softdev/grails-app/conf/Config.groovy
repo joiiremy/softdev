@@ -114,6 +114,9 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    debug   'grails.app.controllers.com.swd', //debug from pakage
+            'grails.app.services.com.swd'
 }
 
 
@@ -145,6 +148,8 @@ grails.plugin.springsecurity.interceptUrlMap = [
    '/login/**':        ['permitAll'],
    '/logout/**':       ['permitAll']
 ]
+
+
 
 // grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 // 	'/':                ['permitAll'],
