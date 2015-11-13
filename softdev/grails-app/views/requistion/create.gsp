@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'requestion.label', default: 'Requestion')}" />
+		<g:set var="entityName" value="${message(code: 'requistion.borrow.label', default: 'Requestion')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -22,9 +22,7 @@
 						<fieldset class="form">
 							<g:render template="form"/>
 						</fieldset>
-						<fieldset class="buttons">
-							<g:submitButton name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-						</fieldset>
+						
 					</g:form>
 				</div>
 	</body>

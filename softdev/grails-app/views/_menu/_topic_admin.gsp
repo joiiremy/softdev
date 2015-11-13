@@ -6,7 +6,7 @@
 		<h4 class="list-group-item-heading">คลังสินค้า/แก้ไข</h4>
 	</a> 
 	<a href="${createLink(controller: 'Equipment', action: 'create')}"class="list-group-item">
-		<h4 class="list-group-item-heading">เพิ่ม</h4>
+		<h4 class="list-group-item-heading">เพิ่มสินค้า</h4>
 	</a>
 %{-- 	<a href="${createLink(controller: 'Equipment', action: 'edit')}"class="list-group-item">
 		<h4 class="list-group-item-heading">แก้ไข</h4>

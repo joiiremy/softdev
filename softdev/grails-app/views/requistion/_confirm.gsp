@@ -1,20 +1,18 @@
-
 <%@ page import="com.swd.Requistion" %>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'requistion.label', default: 'Requistion')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<div id="show-requistion" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			
-			<dl class="dl-horizontal">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">
+          ${message(code: 'requistion.confirm.title.label', default: 'Confirm')}</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <dl class="dl-horizontal">
             <dt class="fieldcontain">
                <span id="approved-label" class="property-label"><g:message code="requistion.approved.label" default="Approved" /></span>
             </dt>
@@ -90,12 +88,20 @@
 
         </dl>
         
-			<g:form url="[resource:requistionInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-warning edit" action="edit" resource="${requistionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
-</html>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+
+          <g:if test="${params.action == 'edit'}">
+             <g:actionSubmit class="save btn btn-info btn-lg" action="update " value="${message(code: 'default.button.update.label', default: 'Update')}" />
+          </g:if>
+          <g:elseif test="${params.action== 'create'}">
+               <g:submitButton name="create" class="save btn btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+          </g:elseif>
+
+      </div>
+    </div>
+  </div>
+</div>

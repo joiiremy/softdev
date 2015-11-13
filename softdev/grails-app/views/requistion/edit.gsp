@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'requistion.label', default: 'Requistion')}" />
+		<g:set var="entityName" value="${message(code: 'requistion.borrow.label', default: 'Requistion')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -24,9 +24,7 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-info pull-right btn-lg" action="update " value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				
 			</g:form>
 		</div>
 	</body>

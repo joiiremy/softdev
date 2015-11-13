@@ -26,11 +26,8 @@ class RequistionController {
         }else {
             requistionId = params.id
         }
+        log.debug requistionId
         redirect controller:'Matching', action:'create', id:requistionId
-        // def data = [:]
-        // data.question = Question.load(params.id)
-        // data.qsequence = params.qsequence
-        // render(template: 'addMember', model:[data : data])
     }
 
     def editMatching(){
@@ -45,7 +42,11 @@ class RequistionController {
 
     def create() {
         // log.debug params.matching?.equipment?.id
-        log.debug params.properties
+        if(params.id){
+             redirect controller:'requistion', action:'edit', id:params.id
+             return
+        }
+
         respond new Requistion(params)
         // respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
     }
@@ -70,18 +71,16 @@ class RequistionController {
 
         requistionInstance.save flush:true
 
-        // if(!requistionInstance.matchings){
-        //     redirect controller:'Matching', action:'create', id:requistionInstance.id 
-        //     return
-        // }
+        redirect controller:'requistion', action:'create', id:requistionInstance.id 
+        return
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'requistion.label', default: 'Requistion'), requistionInstance.id])
-                redirect requistionInstance
-            }
-            '*' { respond requistionInstance, [status: CREATED] }
-        }
+        // request.withFormat {
+        //     form multipartForm {
+        //         flash.message = message(code: 'default.created.message', args: [message(code: 'requistion.label', default: 'Requistion'), requistionInstance.id])
+        //         redirect requistionInstance
+        //     }
+        //     '*' { respond requistionInstance, [status: CREATED] }
+        // }
     }
 
     def edit(Requistion requistionInstance) {
@@ -123,13 +122,19 @@ class RequistionController {
 
         requistionInstance.delete flush:true
 
+
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Requistion.label', default: 'Requistion'), requistionInstance.id])
-                redirect action:"index", method:"GET"
+                // redirect action:"index", method:"GET"
+                redirect action:"create", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
+
+        // redirect controller:'requistion', action:'create' 
+        // return
     }
 
     protected void notFound() {

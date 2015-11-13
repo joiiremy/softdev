@@ -63,7 +63,7 @@ class MatchingController {
         //     }
         //     // '*' { respond matchingInstance, [status: CREATED] }
         // }
-        forward controller: "requistion", action: "edit", id:matchingInstance.requistion.id
+        redirect controller: "requistion", action: "edit", id:matchingInstance.requistion.id
     }
 
     def edit(Matching matchingInstance) {

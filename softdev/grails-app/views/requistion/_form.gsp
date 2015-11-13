@@ -65,9 +65,14 @@
 <div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'matchings', 'error')} ">
 	<label class="col-sm-2 control-label" for="matchings">
 		<g:message code="requistion.matchings.label" default="Matchings" />	
-		<g:actionSubmit action="addMatching" id='${requistionInstance?.id}' value="add"/>	
 	</label>
-
+	<div class="col-sm-10">
+		<g:actionSubmit  class="btn btn-default btn-lg " action="addMatching" id='${requistionInstance?.id}' value="${message(code: 'matching.add.equipment.label')}"/>	
+		
+		%{-- <g:link class="btn btn-default btn-lg" action="addMatching" id='${requistionInstance?.id}'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+		<g:message code="matching.add.equipment.label" default="Add Equipment" />	
+		</g:link> --}%
+	</div>
 </div>
 	<div class="col-sm-2"></div>
 	<div class="col-sm-10">
@@ -88,6 +93,19 @@
 		</table>
 	</div>
 
+	<!-- Button trigger modal -->
+	<g:if test="${params.action == 'edit'}">
+        <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+			 ${message(code: 'default.button.confirm.label', default: 'Confirm')}
+		</button> 
+    </g:if>
+    <g:elseif test="${params.action== 'create'}">
+         <g:submitButton name="create" class="save btn btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+    </g:elseif>
+	
+
+	<g:render template="confirm" model="['requistionInstance': requistionInstance]"/>
+
 <script type="text/javascript">
 	$( document ).ready(function() {
 		$(".chosen-select").chosen({no_results_text: "Oops, nothing found!"}); 
@@ -99,3 +117,4 @@
 	// 		});
 	// };
 </script>
+
