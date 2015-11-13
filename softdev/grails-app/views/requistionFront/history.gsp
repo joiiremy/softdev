@@ -25,9 +25,11 @@
 				Search:
 				<div class="form-group">
 					<g:select class="my_select_box form-control" noSelection="['':'-All Account-']" optionKey="id" optionValue="name" name="accountId" from="${accounts}" value="${accountId}"/>
+					<g:select class="my_select_box form-control" noSelection="['':'-All Equipment-']" optionKey="id" optionValue="title" name="equipmentId" from="${equipments}" value="${equipmentId}"/>
 				</div>
+				<g:checkBox name="notreturn" value="${false}"/> not return
 				&emsp;<g:actionSubmit value="Search" action="history" class="btn btn-info"/>
-				<g:link class="btn btn-warning" action="history" params="[accountId: '']">
+				<g:link class="btn btn-warning" action="history"  params="[accountId: '',equipmentId:'']">
 		        	Clear
 		       	</g:link>
 	</g:form>
@@ -70,27 +72,31 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>ลำดับ</th>
 									<th>รายการอุปกรณ์</th>
 									<th>จำนวน</th>
+									<th>วันที่ยืม</th>
+									<th>วันที่คืน</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>1</td>
-									<td>new</td>
-									<td>3</td>
+  								<g:each status="i" in="${requistionList}" var="item">
+  									<g:each status="j" in="${item.matchings}" var="match">
+									<td>							
+											${match.equipment.title} <br>
+									</td>
+									<td>
+											${match.amount} <br>
+									</td>
+									<td>
+    										${item.requistionDate}
+									</td>
+									<td>
+    										${item.returnDate}
+									</td>
 								</tr>
-								<tr>
-									<td>2</td>
-									<td>Moe</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>sic</td>
-									<td>3</td>
-								</tr>
+							</g:each>
+    						</g:each>
 							</tbody>
 						</table>
 					</div>
