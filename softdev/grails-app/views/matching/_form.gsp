@@ -1,27 +1,30 @@
 <%@ page import="com.swd.Matching" %>
 
-<div class="fieldcontain ${hasErrors(bean: matchingInstance, field: 'equipment', 'error')} required">
-	<label for="equipment">
+<div class="form-group fieldcontain ${hasErrors(bean: matchingInstance, field: 'equipment', 'error')} required">
+	<label class="col-sm-2 control-label" for="equipment">
 		<g:message code="matching.equipment.label" default="Equipment" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="equipment" name="equipment.id" from="${com.swd.Equipment.list()}" optionValue="title" optionKey="id" required="title" value="${matchingInstance?.equipment?.id}" class="many-to-one"/>
-	
+	<div class="col-sm-10">
+		<g:select id="equipment" name="equipment.id" from="${com.swd.Equipment.list()}" optionValue="title" optionKey="id" required="title" value="${matchingInstance?.equipment?.id}" class="many-to-one form-control"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: matchingInstance, field: 'amount', 'error')} required">
-	<label for="amount">
+<div class="form-group fieldcontain ${hasErrors(bean: matchingInstance, field: 'amount', 'error')} required">
+	<label class="col-sm-2 control-label" for="amount">
 		<g:message code="matching.amount.label" default="Amount" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="amount" type="number" value="${matchingInstance.amount}" required=""/>
+	<div class="col-sm-10">
+		<g:field name="amount" type="number" class="form-control" value="${matchingInstance.amount}" required=""/>
+	</div>
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: matchingInstance, field: 'requistion', 'error')} required">
-	<label for="requistion">
-		<g:message code="matching.requistion.label" default="Requistion" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="requistion" name="requistion.id" from="${com.swd.Requistion.list()}" optionKey="id" required="" value="${matchingInstance?.requistion?.id}" class="many-to-one"/>
+	<g:if test="${params.id}">
+    	<g:hiddenField name="requistion.id" value="${params.id}" />
+	</g:if>
+	<g:if test="${requistion?.id}">
+    	<g:hiddenField name="requistion.id" value="${requistion?.id}" />
+	</g:if>
 </div>

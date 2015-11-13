@@ -15,18 +15,49 @@ class RequistionController {
         respond Requistion.list(params), model:[requistionInstanceCount: Requistion.count()]
     }
 
+
+    def addMatching(){
+        def requistionId
+        def requistion
+        if(!params.id){
+            requistion = new Requistion(params)   
+            requistion.save flush:true
+            requistionId = requistion.id
+        }else {
+            requistionId = params.id
+        }
+        redirect controller:'Matching', action:'create', id:requistionId
+        // def data = [:]
+        // data.question = Question.load(params.id)
+        // data.qsequence = params.qsequence
+        // render(template: 'addMember', model:[data : data])
+    }
+
+    def editMatching(){
+        log.debug params.matchingId
+        redirect controller:'Matching', action:'edit', id:params.matchingId as Long
+    }
+
     def show(Requistion requistionInstance) {
         respond requistionInstance
         
     }
 
     def create() {
+        // log.debug params.matching?.equipment?.id
+        log.debug params.properties
         respond new Requistion(params)
-        respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
+        // respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
     }
+
+ 
 
     @Transactional
     def save(Requistion requistionInstance) {
+        // Requistion requistionInstance
+        // requistionInstance.properties = params
+
+
         if (requistionInstance == null) {
             notFound()
             return
@@ -39,6 +70,11 @@ class RequistionController {
 
         requistionInstance.save flush:true
 
+        // if(!requistionInstance.matchings){
+        //     redirect controller:'Matching', action:'create', id:requistionInstance.id 
+        //     return
+        // }
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'requistion.label', default: 'Requistion'), requistionInstance.id])
@@ -49,7 +85,8 @@ class RequistionController {
     }
 
     def edit(Requistion requistionInstance) {
-        respond requistionInstance
+        log.debug "requistion Id" 
+        respond requistionInstance, model:[id:params.id]
     }
 
     @Transactional
@@ -77,6 +114,7 @@ class RequistionController {
 
     @Transactional
     def delete(Requistion requistionInstance) {
+        log.debug "hello delte requistion"
 
         if (requistionInstance == null) {
             notFound()

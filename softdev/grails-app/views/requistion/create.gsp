@@ -18,12 +18,12 @@
 						</g:eachError>
 					</ul>
 					</g:hasErrors>
-					<g:form url="[resource:requistionInstance, action:'save']" >
+					<g:form url="[resource:requistionInstance, action:'save']" class="form-horizontal">
 						<fieldset class="form">
 							<g:render template="form"/>
 						</fieldset>
 						<fieldset class="buttons">
-							<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+							<g:submitButton name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 						</fieldset>
 					</g:form>
 				</div>
