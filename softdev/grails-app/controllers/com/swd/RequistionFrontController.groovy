@@ -23,11 +23,29 @@ def springSecurityService
 	    		borrower{
 		        	idEq accountId
 		        }
-    		}		
+                if(params.notreturn){
+                    print "in"
+                    isNull("returnDate")
+                }
+
+    		}	
+
         }
+        print params.notreturn
+        print requistionList
+
+       // def returnDate 
+       // def requistionList = Requistion.createCriteria().list{
+       //      if(params.long("accountId")){
+
+
+       //      }
+
+       // }     
+
         // def checkoutQuestionInstanceCount = CheckoutQuestion.createCriteria().list(query).size()
-        
-    	[requistionList : requistionList, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
+    	[
+            requistionList : requistionList, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
     }
 }
 
