@@ -5,11 +5,16 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class RequistionFrontController {
+def springSecurityService
 
     def borrow() {
 
     }
-    def returns() { }
+    def returns() { 
+        def accountId = springSecurityService.principal.id
+        def account = Account.get(accountId)
+        [account: account.name]
+    }
     def history() { 
     	def accountId
         def requistionList = Requistion.createCriteria().list{

@@ -18,7 +18,7 @@ $( document ).ready(function() {
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <form action="${createLink(uri: '/j_spring_security_check')}" method="post" accept-charset="UTF-8">
-          <g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.Account.list()}" optionKey="username" optionValue="name" required="" style="width:80%;" value="${requistionInstance?.borrower?.id}" />
+          <g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="username" optionValue="name" required="" style="width:80%;" value="${requistionInstance?.borrower?.id}" />
           <g:hiddenField name="j_password" value="1234" />
           <input class="btn btn-info pull-right" type="submit" id="sign-in" value="Next">
         </div>        

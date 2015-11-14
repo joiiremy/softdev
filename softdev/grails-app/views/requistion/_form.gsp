@@ -15,10 +15,12 @@
 		<g:message code="requistion.borrower.label" default="Borrower" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select class="chosen-select many-to-one" id="borrower" name="borrower.id" from="${com.swd.Account.list()}" optionKey="id" optionValue="name" required="" style="width:350px;" value="${requistionInstance?.borrower?.id}" />
+	<g:select class="chosen-select many-to-one" id="borrower" name="borrower.id" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="id" optionValue="name" required="" style="width:350px;" value="${requistionInstance?.borrower?.id}" />
 
 </div>
-
+<sec:ifLoggedIn>
+	role: ${role.authority}
+</sec:ifLoggedIn>
 <div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'endorser', 'error')} required">
 	<label for="endorser">
 		<g:message code="requistion.endorser.label" default="Endorser" />

@@ -129,6 +129,8 @@ grails.plugin.springsecurity.rejectIfNoRule = true
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
    '/':                ['permitAll'],
+   '/console/**':       ['permitAll'],
+   '/plugins/console*/**': ['permitAll'],
    '/error':           ['permitAll'],
    '/index':           ['permitAll'],
    '/index.gsp':       ['permitAll'],

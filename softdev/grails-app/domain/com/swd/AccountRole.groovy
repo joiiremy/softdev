@@ -12,6 +12,12 @@ class AccountRole implements Serializable {
 
 	Account account
 	Role role
+	
+	static namedQueries = {
+    	user {
+    		eq 'role', 'ROLE_USER'
+    	}
+    }
 
 	AccountRole(Account u, Role r) {
 		this()

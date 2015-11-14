@@ -12,6 +12,7 @@
 </head>
 <body>
 %{-- start search --}%
+accountId = ${account}
 			<form>
 				<div class="form-group">
 					<div class="row">
