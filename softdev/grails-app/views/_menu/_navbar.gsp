@@ -1,3 +1,4 @@
+<%@ page import="com.swd.Requistion" %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -51,6 +52,7 @@
 
 
       <sec:ifAnyGranted roles="ROLE_ADMIN">
+      <g:set var="sizeOfApproved" value="${Requistion.findAllByApproved('').size()}" />
          <li class="dropdown">
             <a href="${createLink(uri: '/')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MENU <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -59,7 +61,11 @@
               <li><a href="${createLink(controller: 'Equipment', action: 'create')}"> เพิ่มสินค้า
             </a></li>
               <li><a href="${createLink(controller: 'Requistion', action: 'index')}">
-              สถิติ / ประวัติการยืมสินค้า      
+              สถิติ / ประวัติการยืมสินค้า  
+              <g:if test="${sizeOfApproved != 0}">
+                <span class="badge progress-bar-warning">${sizeOfApproved}</span>   
+              </g:if>
+
             </a></li>
             </ul>
         </li>
@@ -75,7 +81,10 @@
           </li> 
           <li class="${ params.action == "index"  && params.controller == 'requistion'? 'active' : '' }">
             <a href="${createLink(controller: 'Requistion', action: 'index')}">
-              สถิติ / ประวัติการยืมสินค้า      
+              สถิติ / ประวัติการยืมสินค้า  
+              <g:if test="${sizeOfApproved != 0}">
+                <span class="badge progress-bar-warning">${sizeOfApproved}</span>   
+              </g:if>     
             </a>
           </li>
         </g:if>

@@ -9,6 +9,7 @@ class Requistion {
 	Boolean approved
 
     static constraints = {
-
+    	approved nullable : true
+    	endorser nullable : true
     }
 }

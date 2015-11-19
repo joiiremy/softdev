@@ -42,7 +42,13 @@
 					
 						<td>${fieldValue(bean: requistionInstance, field: "endorser")}</td>
 					
-						<td><g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "approved")}</g:link></td>
+						<td>
+							%{-- <g:link action="show" id="${requistionInstance.id}">${fieldValue(bean: requistionInstance, field: "approved")}</g:link> --}%
+							%{-- ${requistionInstance.approved.toString() == 'null'} --}%
+							<g:link action="show" id="${requistionInstance.id}">
+								<g:isApproved test="${fieldValue(bean: requistionInstance, field: "approved")}"></g:isApproved>
+							</g:link>
+						</td>
 					
 					
 					</tr>

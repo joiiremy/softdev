@@ -1,3 +1,4 @@
+import org.joda.time.*;
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -151,7 +152,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
    '/logout/**':       ['permitAll']
 ]
 
-
+jodatime.format.html5 = true
 
 // grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 // 	'/':                ['permitAll'],

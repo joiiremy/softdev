@@ -13,13 +13,12 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			
 			<dl class="dl-horizontal">
             <dt class="fieldcontain">
                <span id="approved-label" class="property-label"><g:message code="requistion.approved.label" default="Approved" /></span>
             </dt>
             <dd>
-                <span class="property-value" aria-labelledby="approved-label"><g:formatBoolean boolean="${requistionInstance?.approved}" /></span>
+                <g:isApproved test="${fieldValue(bean: requistionInstance, field: "approved")}"></g:isApproved>
             </dd>
           
            <g:if test="${requistionInstance?.requistionDate}">
@@ -45,7 +44,7 @@
                 <span id="borrower-label" class="property-label"><g:message code="requistion.borrower.label" default="Borrower" /></span>
             </dt>
             <dd>
-                <span class="property-value" aria-labelledby="borrower-label"><g:link controller="account" action="show" id="${requistionInstance?.borrower?.id}">${requistionInstance?.borrower?.encodeAsHTML()}</g:link></span>
+                <span class="property-value" aria-labelledby="borrower-label"><g:link controller="account" action="show" id="${requistionInstance?.borrower?.id}">${requistionInstance?.borrower?.name?.encodeAsHTML()}</g:link></span>
             </dd>
           </g:if>
 
@@ -54,7 +53,7 @@
                <span id="endorser-label" class="property-label"><g:message code="requistion.endorser.label" default="Endorser" /></span>
             </dt>
             <dd>
-              <span class="property-value" aria-labelledby="endorser-label"><g:link controller="account" action="show" id="${requistionInstance?.endorser?.id}">${requistionInstance?.endorser?.encodeAsHTML()}</g:link></span>
+              <span class="property-value" aria-labelledby="endorser-label"><g:link controller="account" action="show" id="${requistionInstance?.endorser?.id}">${requistionInstance?.endorser?.name?.encodeAsHTML()}</g:link></span>
             </dd>
           </g:if>      
 
@@ -82,14 +81,33 @@
                   </g:if>       
                 </tbody>
               </table>
-
             </dd>
           </g:if>
-          
-       
+
+      
+          </dt>
+
 
         </dl>
-        
+      
+        <sec:ifAnyGranted roles="ROLE_ADMIN">
+      
+      %{-- ADMIN CAN CONFIRM APPORVED ONLY --}%
+
+        <g:set var="isApproved" value="${requistionInstance?.approved.toString()}" />
+            <g:link class="btn btn-info pull-right" action="isApproved" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[approved: true]"><g:message code="default.button.approved.label" default="Approved" /></g:link>
+           
+          <g:if test="${isApproved != 'false'}">
+          <g:link class="btn btn-danger pull-right" action="isApproved" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[approved: false]"><g:message code="default.button.notApproved.label" default="Not Approved" /></g:link>
+          </g:if> 
+
+
+
+      </sec:ifAnyGranted>
+
+
+
+
 			<g:form url="[resource:requistionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="btn btn-warning edit" action="edit" resource="${requistionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -99,3 +117,8 @@
 		</div>
 	</body>
 </html>
+
+
+       
+        
+     

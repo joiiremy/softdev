@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class RequistionController {
-
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -15,7 +15,16 @@ class RequistionController {
         respond Requistion.list(params), model:[requistionInstanceCount: Requistion.count()]
     }
 
-
+    def isApproved(Integer id){
+        def requistion = Requistion.get(id)
+        log.debug id 
+        log.debug params.approved
+        requistion.approved = params.approved
+        requistion.endorser = Account.get(springSecurityService.principal.id)
+        requistion.save(flush:true)
+        log.debug requistion.approved
+        redirect action :'show', id:id
+    }
     def addMatching(){
         def requistionId
         def requistion
@@ -41,13 +50,14 @@ class RequistionController {
     }
 
     def create() {
-        // log.debug params.matching?.equipment?.id
+        def accountId = springSecurityService.principal.id
+        def account = Account.get(accountId)
         if(params.id){
              redirect controller:'requistion', action:'edit', id:params.id
              return
         }
 
-        respond new Requistion(params)
+        respond new Requistion(params),model:[account: account]
         // respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
     }
 
@@ -84,7 +94,7 @@ class RequistionController {
     }
 
     def edit(Requistion requistionInstance) {
-        log.debug "requistion Id" 
+        log.debug "requistion Id" + params.id
         respond requistionInstance, model:[id:params.id]
     }
 

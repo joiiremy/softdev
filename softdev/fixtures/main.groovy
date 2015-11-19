@@ -32,9 +32,9 @@ fixture {
 	e11(Equipment, barcode:"0010",title:"น้ำยาถูพื้น" ,amount:10	,price:75 ,description:"สำหรับขัดห้องน้ำ")
 	
 	r01(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user01, endorser: user_admin, approved : true)
-	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user02, endorser: user_admin, approved : true)
-	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user03, endorser: user_admin, approved : true)
-	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user04, endorser: user_admin, approved : true)
+	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user02, endorser: user_admin)
+	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user03, endorser: user_admin, approved : false)
+	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user04, endorser: user_admin)
 	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user05, endorser: user_admin, approved : true)
 	
 	m01(Matching, equipment: e01,requistion: r01, amount: 2)

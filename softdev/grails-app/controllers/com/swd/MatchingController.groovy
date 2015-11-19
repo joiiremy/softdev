@@ -55,15 +55,16 @@ class MatchingController {
 
         matchingInstance.save flush:true
 
-        // log.debug matchingInstance.requistion.id
-        // request.withFormat {
-        //     form multipartForm {
-        //         flash.message = message(code: 'default.created.message', args: [message(code: 'matching.label', default: 'Matching'), matchingInstance.id])
-        //         redirect matchingInstance
-        //     }
-        //     // '*' { respond matchingInstance, [status: CREATED] }
-        // }
-        redirect controller: "requistion", action: "edit", id:matchingInstance.requistion.id
+        log.debug matchingInstance.requistion.id
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'matching.label', default: 'Matching'), matchingInstance.id])
+                // redirect matchingInstance
+                 redirect controller: "requistion", action: "edit", id:matchingInstance.requistion.id
+            }
+            // '*' { respond matchingInstance, [status: CREATED] }
+        }
+       
     }
 
     def edit(Matching matchingInstance) {
@@ -84,15 +85,16 @@ class MatchingController {
 
         matchingInstance.save flush:true
 
-        // request.withFormat {
-        //     form multipartForm {
-        //         flash.message = message(code: 'default.updated.message', args: [message(code: 'Matching.label', default: 'Matching'), matchingInstance.id])
-        //         redirect matchingInstance
-        //     }
-        //     '*'{ respond matchingInstance, [status: OK] }
-        // }
-        log.debug matchingInstance.requistion.id
-        forward controller: "requistion", action: "edit", id:matchingInstance.requistion.id
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Matching.label', default: 'Matching'), matchingInstance.id])
+                // redirect matchingInstance
+                redirect controller: "requistion", action: "edit", id:matchingInstance.requistion.id
+            }
+            '*'{ respond matchingInstance, [status: OK] }
+        }
+        // log.debug matchingInstance.requistion.id
+        
     }
 
     @Transactional
