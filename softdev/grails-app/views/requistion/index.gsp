@@ -38,7 +38,7 @@
 						<td>${fieldValue(bean: requistionInstance, field: "requistionDate")}</td>
 					
 						<td>${fieldValue(bean: requistionInstance, field: "returnDate")}</td>
-						<td>${fieldValue(bean: requistionInstance, field: "borrower")}</td>
+						<td>${fieldValue(bean: requistionInstance, field: "borrower.name")}</td>
 					
 						<td>${fieldValue(bean: requistionInstance, field: "endorser")}</td>
 					

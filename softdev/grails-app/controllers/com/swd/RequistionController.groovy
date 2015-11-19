@@ -15,11 +15,12 @@ class RequistionController {
         respond Requistion.list(params), model:[requistionInstanceCount: Requistion.count()]
     }
 
-    def isApproved(Integer id){
+    def isApproved(Integer id, Boolean approved){
         def requistion = Requistion.get(id)
         log.debug id 
-        log.debug params.approved
-        requistion.approved = params.approved
+        log.debug "approved.params"+approved
+        requistion.approved = approved
+        log.debug "approved "+requistion.approved
         requistion.endorser = Account.get(springSecurityService.principal.id)
         requistion.save(flush:true)
         log.debug requistion.approved

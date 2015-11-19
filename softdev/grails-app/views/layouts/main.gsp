@@ -18,13 +18,22 @@
 	</head>
 	<body>
 		
-		<div class="container">
+		<div class="container" >
 %{-- 			<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div> --}%
 			<g:render template="/_menu/navbar"/>
 			<g:layoutBody/>
-			<div class="footer" role="contentinfo"></div>
-			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+			<div class="footer container" role="contentinfo" style="text-align:center; clear:both;
+    text-align:center;padding:5px;background:#CCCCCC;margin-top:30%">
+								ภาควิชาวิศวกรรมคอมพิวเตอร์ <br>
+				คณะวิศวกรรมศาสตร์, มหาวิทยาลัยสงขลานครินทร์ <br>
+				ตู้ ปณ. 2 คอหงส์ อ.หาดใหญ่ จ.สงขลา 90112 ประเทศไทย <br>
+				เบอร์โทรศัพท์: +66 (0)74 287075, แฟกซ์: +66 (0)74 287076 <br>
+			</div>
+			%{-- <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div> --}%
+
 		</div>	
-		
+		%{-- <footer id="footer">
+			<g:render template="/_menu/footer"/>
+		</footer> --}%
 	</body>
 </html>

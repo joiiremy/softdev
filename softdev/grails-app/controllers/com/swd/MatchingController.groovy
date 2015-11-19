@@ -17,6 +17,7 @@ class MatchingController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+       
         respond Matching.list(params), model:[matchingInstanceCount: Matching.count()]
     }
 

@@ -51,7 +51,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-		<joda:dateField class="form-control" style="width:20%" name="requistionDate" value="${new LocalDate()}" />
+		<joda:dateField class="form-control" style="width:50%" name="requistionDate" value="${new LocalDate()}" />
 	</div>
 </div>
 
@@ -61,7 +61,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-		<joda:dateField class="form-control" style="width:20%" name="returnDate" value="${new LocalDate().plusWeeks(1)}" />
+		<joda:dateField class="form-control" style="width:50%" name="returnDate" value="${new LocalDate().plusWeeks(1)}" />
 	</div>
 </div>
 <div class="form-group fieldcontain ${hasErrors(bean: requistionInstance, field: 'isMatching', 'error')} required">

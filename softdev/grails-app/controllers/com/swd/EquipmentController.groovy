@@ -7,12 +7,14 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class EquipmentController {
-
+    def backendService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Equipment.list(params), model:[equipmentInstanceCount: Equipment.count()]
+        def equipmentLists = backendService.queryMatching()
+        log.debug equipmentLists
+        respond Equipment.list(params), model:[equipmentInstanceCount: Equipment.count(), equipmentLists:equipmentLists]
     }
 
     def show(Equipment equipmentInstance) {

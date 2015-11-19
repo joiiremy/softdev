@@ -1,5 +1,6 @@
 
 <%@ page import="com.swd.Equipment" %>
+<%@ page import="com.swd.Matching" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
 
 				<g:sortableColumn property="amount" title="${message(code: 'equipment.amount.label', default: 'Amount')}" />
 
+				<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'Total')}" />
 
 				<g:sortableColumn property="price" title="${message(code: 'equipment.price.label', default: 'Price')}" />
 
@@ -42,6 +44,12 @@
 				<td>${fieldValue(bean: equipmentInstance, field: "title")}</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "amount")}</td>
+
+				<td>
+			<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
+					${equipmentInstance.amount - (amountOfEq?:0)} 
+
+				</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "price")}</td>
 
