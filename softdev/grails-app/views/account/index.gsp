@@ -20,21 +20,16 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-striped">
 			<thead>
 					<tr>
 					
 						<g:sortableColumn property="username" title="${message(code: 'account.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'account.password.label', default: 'Password')}" />
-					
-						<g:sortableColumn property="accountExpired" title="${message(code: 'account.accountExpired.label', default: 'Account Expired')}" />
-					
-						<g:sortableColumn property="accountLocked" title="${message(code: 'account.accountLocked.label', default: 'Account Locked')}" />
-					
+						
 						<g:sortableColumn property="barcode" title="${message(code: 'account.barcode.label', default: 'Barcode')}" />
 					
-						<g:sortableColumn property="enabled" title="${message(code: 'account.enabled.label', default: 'Enabled')}" />
+						
 					
 					</tr>
 				</thead>
@@ -44,16 +39,23 @@
 					
 						<td><g:link action="show" id="${accountInstance.id}">${fieldValue(bean: accountInstance, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: accountInstance, field: "password")}</td>
+						
 					
-						<td><g:formatBoolean boolean="${accountInstance.accountExpired}" /></td>
-					
-						<td><g:formatBoolean boolean="${accountInstance.accountLocked}" /></td>
+						
 					
 						<td>${fieldValue(bean: accountInstance, field: "barcode")}</td>
 					
-						<td><g:formatBoolean boolean="${accountInstance.enabled}" /></td>
-					
+						
+						<td >
+						<div class="pull-right">
+							<g:form url="[resource:accountInstance, action:'delete']" method="DELETE">
+							<g:link class="btn btn-warning" action="edit" id="${accountInstance.id}">${message(code: 'default.button.edit.label', default: 'Edit')}
+							</g:link>
+							<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+							</g:form>
+						</div>		
+					</td>
+
 					</tr>
 				</g:each>
 				</tbody>

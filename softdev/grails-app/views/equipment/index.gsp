@@ -59,7 +59,7 @@
 				<td >
 					<div class="pull-right">
 						<g:form url="[resource:equipmentInstance, action:'delete']" method="DELETE">
-						<g:link class="btn btn-warning" action="edit" id="${equipmentInstance.id}">Edit
+						<g:link class="btn btn-warning" action="edit" id="${equipmentInstance.id}">${message(code: 'default.button.edit.label', default: 'Edit')}
 						</g:link>
 						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						</g:form>
