@@ -16,10 +16,8 @@ def springSecurityService
         [account: account.name]
     }
     def history() { 
-    	def accountId
+    	def accountId = springSecurityService.principal.id
         def requistionList = Requistion.createCriteria().list{
-        	if(params.long("accountId")){
-	    		accountId = params.accountId as Long
 	    		borrower{
 		        	idEq accountId
 		        }
@@ -29,10 +27,8 @@ def springSecurityService
                 }
 
     		}	
-
-        }
-        print params.notreturn
-        print requistionList
+        // print params.notreturn
+        // print requistionList
 
        // def returnDate 
        // def requistionList = Requistion.createCriteria().list{
@@ -45,7 +41,7 @@ def springSecurityService
 
         // def checkoutQuestionInstanceCount = CheckoutQuestion.createCriteria().list(query).size()
     	[
-            requistionList : requistionList, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
+            requistionList : requistionList, notreturn: params.notreturn, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
     }
 }
 

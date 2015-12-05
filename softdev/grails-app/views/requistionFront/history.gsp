@@ -23,11 +23,11 @@
 	</div>
 	<g:form class="form-inline pull-right">
 				Search:
-				<div class="form-group">
+				%{-- <div class="form-group">
 					<g:select class="my_select_box form-control" noSelection="['':'-All Account-']" optionKey="id" optionValue="name" name="accountId" from="${accounts}" value="${accountId}"/>
 					<g:select class="my_select_box form-control" noSelection="['':'-All Equipment-']" optionKey="id" optionValue="title" name="equipmentId" from="${equipments}" value="${equipmentId}"/>
-				</div>
-				<g:checkBox name="notreturn" value="${false}"/> not return
+				</div> --}%
+				<g:checkBox name="notreturn" value="${notreturn}"/> not return
 				&emsp;<g:actionSubmit value="Search" action="history" class="btn btn-info"/>
 				<g:link class="btn btn-warning" action="history"  params="[accountId: '',equipmentId:'']">
 		        	Clear
