@@ -165,3 +165,4 @@ jodatime.format.html5 = true
 // 	'/**/favicon.ico':  ['permitAll']
 // ]
 
+grails.plugins.twitterbootstrap.fixtaglib = true
