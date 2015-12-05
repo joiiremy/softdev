@@ -116,7 +116,7 @@
 		</button> 
     </g:if>
     <g:elseif test="${params.action== 'create'}">
-         <g:submitButton name="create" class="save btn btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+         <g:submitButton name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
     </g:elseif>
 	
 

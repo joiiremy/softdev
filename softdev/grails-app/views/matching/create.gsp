@@ -3,11 +3,11 @@
 	<head>
 		<meta name="layout" content="main">
 %{-- 		<g:set var="entityName" value="${message(code: 'matching.label', default: 'Matching')}" /> --}%
-		<title><g:message code="matching.create" /></title>
+		<title><g:message code="matching.add.equipment.label" /></title>
 	</head>
 	<body>
-		<div id="create-matching" class="content scaffold-create" role="main">
-			<h1><g:message code="matching.create" /></h1>
+		<div id="matching.add.equipment.label" class="content scaffold-create" role="main">
+			<h1><g:message code="matching.add.equipment.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
