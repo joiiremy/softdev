@@ -143,6 +143,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
    '/equipment/**':       ['permitAll'],
    '/requistion/**':       ['permitAll'],
    '/matching/**':       ['permitAll'],
+   '/**/**':       ['ROLE_ADMIN'],
    '/assets/**':       ['permitAll'],
    '/**/js/**':        ['permitAll'],
    '/**/css/**':       ['permitAll'],

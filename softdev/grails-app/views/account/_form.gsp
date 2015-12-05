@@ -94,7 +94,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'requistions', 'error')} ">
 	<label for="requistions">
-		<g:message code="account.requistions.label" default="Requistions" />
+		<g:message code="requistion.label" default="Requistions" />
 		
 	</label>
 	
