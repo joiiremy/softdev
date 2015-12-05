@@ -101,5 +101,4 @@ class AccountRoleController {
             '*'{ render status: NOT_FOUND }
         }
     }
-
 }

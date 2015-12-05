@@ -26,7 +26,6 @@ class MatchingController {
     }
 
     def create() {
-        log.debug params.requistionInstance
         // def requistion = new Requistion(params)
         // requistion.save flush:true
         // def requistionId
@@ -44,11 +43,12 @@ class MatchingController {
 
     @Transactional
     def save(Matching matchingInstance) {
+        log.debug "hello"
         if (matchingInstance == null) {
             notFound()
             return
         }
-
+        
         if (matchingInstance.hasErrors()) {
             respond matchingInstance.errors, view:'create'
             return
@@ -56,7 +56,6 @@ class MatchingController {
 
         matchingInstance.save flush:true
 
-        log.debug matchingInstance.requistion.id
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'matching.label', default: 'Matching'), matchingInstance.id])

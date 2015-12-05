@@ -59,12 +59,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${accountInstance?.approvedRequistion}">
+				<g:if test="${accountInstance?.approvedRequistions}">
 				<li class="fieldcontain">
-					<span id="approvedRequistion-label" class="property-label"><g:message code="account.approvedRequistion.label" default="Approved Requistion" /></span>
+					<span id="approvedRequistions-label" class="property-label"><g:message code="account.approvedRequistions.label" default="Approved Requistions" /></span>
 					
-						<g:each in="${accountInstance.approvedRequistion}" var="a">
-						<span class="property-value" aria-labelledby="approvedRequistion-label"><g:link controller="requistion" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						<g:each in="${accountInstance.approvedRequistions}" var="a">
+						<span class="property-value" aria-labelledby="approvedRequistions-label"><g:link controller="requistion" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

@@ -3,6 +3,9 @@
 	<a href="#" class="list-group-item active">
 		<h4 class="list-group-item-heading">Admin</h4>
 	</a>  
+	<a href="${createLink(controller: 'Account', action: 'index')}"class="list-group-item">
+		<h4 class="list-group-item-heading">จัดการผู้ใช้</h4>
+	</a> 
 	<a href="${createLink(controller: 'Equipment', action: 'index')}"class="list-group-item">
 		<h4 class="list-group-item-heading">คลังสินค้า/แก้ไข</h4>
 	</a> 

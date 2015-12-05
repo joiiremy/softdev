@@ -28,7 +28,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="${createLink(controller: 'requistion', action: 'create')}">
                 ${message(code: 'requistion.borrow.label', default: 'Requestion')}</a></li>
-              <li><a href="${createLink(controller: 'requistionFront', action: 'returns')}">คืน</a></li>
+            %{--   <li><a href="${createLink(controller: 'requistionFront', action: 'returns')}">คืน</a></li> --}%
               <li><a href="${createLink(controller: 'requistionFront', action: 'history')}">ประวัติ</a></li>
             </ul>
       </li>
@@ -38,10 +38,10 @@
           <a href="${createLink(controller: 'requistion', action: 'create')}"> ${message(code: 'requistion.borrow.label', default: 'Requestion')}
           </a>
         </li> 
-        <li class="${ params.action == "returns" ? 'active' : '' }">
+     %{--    <li class="${ params.action == "returns" ? 'active' : '' }">
           <a href="${createLink(controller: 'requistionFront', action: 'returns')}"> คืน
           </a>
-        </li> 
+        </li>  --}%
         <li class="${ params.action == "history" ? 'active' : '' }">
           <a href="${createLink(controller: 'requistionFront', action: 'history')}">
             ประวัติ        

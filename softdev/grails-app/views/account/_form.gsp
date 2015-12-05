@@ -38,14 +38,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'approvedRequistion', 'error')} ">
-	<label for="approvedRequistion">
-		<g:message code="account.approvedRequistion.label" default="Approved Requistion" />
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'approvedRequistions', 'error')} ">
+	<label for="approvedRequistions">
+		<g:message code="account.approvedRequistions.label" default="Approved Requistions" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${accountInstance?.approvedRequistion?}" var="a">
+<g:each in="${accountInstance?.approvedRequistions?}" var="a">
     <li><g:link controller="requistion" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">

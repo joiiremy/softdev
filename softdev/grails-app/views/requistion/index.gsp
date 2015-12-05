@@ -9,7 +9,7 @@
 
 	</head>
 	<body>
-		<g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+		%{-- <g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link> --}%
 		<div id="list-requistion" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
