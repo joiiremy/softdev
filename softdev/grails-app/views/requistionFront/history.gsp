@@ -5,14 +5,14 @@
 	<title>ประวัติ</title>
 </head>
 <body >
-	${requistionList}
+	%{-- ${requistionList} --}%
 	<br>
-	${accounts.name}
+	%{-- ${accounts.name} --}%
 	<br>
 	${roles}
-	<g:each in="${matching}">
-	<p>matching: ${it.equipment.title}</p>
-</g:each>
+	%{-- <g:each in="${matching}">
+		<p>matching: ${it.equipment.title}</p>
+	</g:each> --}%
 
 
 <div class="container">
@@ -20,6 +20,7 @@
 		<div class="col-xs-12">
 			<b><h1 class = "text-center">บันทึกประวัติการใช้งาน</h1></b>
 		</div>
+		<br><br><br><br><br><br>
 	</div>
 	<g:form class="form-inline pull-right">
 				Search:
@@ -34,14 +35,15 @@
 		       	</g:link>
 	</g:form>
 
-	ตัวอย่าง  requistionList ที่ได้จากการค้าหา --->	${requistionList}
-	<br> 
+	%{-- ตัวอย่าง  requistionList ที่ได้จากการค้าหา --->	${requistionList} --}%
+	<br><br>
 	<g:each status="i" in="${requistionList}" var="item">
-    	${i} : ${item.requistionDate}, ${item.returnDate} ,
+    	%{-- ${i} : ${item.requistionDate}, ${item.returnDate} , --}%
     	<g:each status="j" in="${item.matchings}" var="match">
-    		${j},${match.equipment.title} จำนวน ${match.amount} <br>
+    		%{-- ${j},${match.equipment.title} จำนวน ${match.amount}  --}%
+    		<br>
     	</g:each>
-    	<br>--------------------------------<br>
+    	%{-- <br>--------------------------------<br> --}%
   	</g:each>
 %{-- 	<form>
 		<div class="form-group">
