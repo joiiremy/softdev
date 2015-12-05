@@ -58,8 +58,12 @@
 
 				<td>${fieldValue(bean: equipmentInstance, field: "description")}</td>
 				<td>
-					<g:set var="amountAlert" value="${equipmentInstance.amount - (amountOfEq?:0) <50 ? "ของใกล้หมด":""}" />
-					${amountAlert}
+					<g:set var="amountAlert" value="${equipmentInstance.amount - (amountOfEq?:0) ==0 ? true:false}" />
+					
+					<g:if test="${amountAlert}">
+						${message(code: 'equipment.AlertEmpty.label', default: 'Empty!!')}
+					</g:if>
+
 				</td>
 				<td >
 					<div class="pull-right">

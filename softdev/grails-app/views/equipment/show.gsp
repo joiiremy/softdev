@@ -8,9 +8,6 @@
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
-	<g:set var="backend" bean="backendService"/>
-	<g:set var="equipmentLists" value="${backend.queryMatching()}"/>
-	${equipmentLists}	
 
 
 	<div id="show-equipment" class="content scaffold-show" role="main">
