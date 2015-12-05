@@ -40,7 +40,7 @@ $( document ).ready(function() {
       <input class="form-control" style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="j_username">
       <input class="form-control" style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="j_password">
       <input style="float: left; margin-right: 10px;" type="checkbox" name="_spring_security_remember_me" id="remember-me" value="1"> 
-      <label class="string optional" for="user_remember_me"> Rememberme</label> <input class="btn btn-primary btn-block" type="submit"id="sign-in" value="Sign In">
+      <label class="string optional" for="user_remember_me"> Remember me</label> <input class="btn btn-primary btn-block" type="submit"id="sign-in" value="Sign In">
     </form>
   </div>
 </div>
