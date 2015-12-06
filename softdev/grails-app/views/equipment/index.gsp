@@ -59,7 +59,7 @@
 				<td >
 					<div class="pull-right">
 						<g:form url="[resource:equipmentInstance, action:'delete']" method="DELETE">
-						
+
 						<g:link class="btn btn-warning" action="edit" id="${equipmentInstance.id}">${message(code: 'default.button.edit.label', default: 'Edit')}
 
 						</g:link>

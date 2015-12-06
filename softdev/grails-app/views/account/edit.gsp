@@ -27,7 +27,8 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:accountInstance, action:'update']" method="PUT" >
+			
+			<g:form url="[resource:accountInstance, action:'update']" method="PUT" class="form-horizontal">
 				<g:hiddenField name="version" value="${accountInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>

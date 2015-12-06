@@ -1,112 +1,85 @@
 <%@ page import="com.swd.Account" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
-	<label for="username">
-		<g:message code="account.username.label" default="Username" />
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
+	<label class="col-sm-2 control-label" for="username">
+		<g:message code="account.username.label" default="รายชื่อผู้ใช้" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="username" required="" value="${accountInstance?.username}"/>
-
+	<div class="col-sm-10">
+		<g:textField class="form-control" name="username" required="" value="${accountInstance?.username}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'password', 'error')} required">
-	<label for="password">
-		<g:message code="account.password.label" default="Password" />
+
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'name', 'error')} required">
+	<label class="col-sm-2 control-label" for="name">
+		<g:message code="account.name.label" default="ชื่อ-สกุล" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="password" required="" value="${accountInstance?.password}"/>
-
+	<div class="col-sm-10">
+		<g:textField class="form-control" name="name" required="" value="${accountInstance?.name}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'accountExpired', 'error')} ">
-	<label for="accountExpired">
-		<g:message code="account.accountExpired.label" default="Account Expired" />
-		
+
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'password', 'error')} required">
+	<label class="col-sm-2 control-label" for="password">
+		<g:message code="account.password.label" default="รหัสผ่าน" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:checkBox name="accountExpired" value="${accountInstance?.accountExpired}" />
-
+	<div class="col-sm-10">
+		<g:textField class="form-control" name="password" required="" value="${accountInstance?.password}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} ">
-	<label for="accountLocked">
-		<g:message code="account.accountLocked.label" default="Account Locked" />
-		
-	</label>
-	<g:checkBox name="accountLocked" value="${accountInstance?.accountLocked}" />
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'approvedRequistions', 'error')} ">
-	<label for="approvedRequistions">
-		<g:message code="account.approvedRequistions.label" default="Approved Requistions" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${accountInstance?.approvedRequistions?}" var="a">
-    <li><g:link controller="requistion" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="requistion" action="create" params="['account.id': accountInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'requistion.label', default: 'Requistion')])}</g:link>
-</li>
-</ul>
-
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'barcode', 'error')} required">
-	<label for="barcode">
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'barcode', 'error')} required">
+	<label class="col-sm-2 control-label" for="barcode">
 		<g:message code="account.barcode.label" default="Barcode" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="barcode" required="" value="${accountInstance?.barcode}"/>
-
+	<div class="col-sm-10">
+		<g:textField class="form-control" name="barcode" required="" value="${accountInstance?.barcode}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'enabled', 'error')} ">
-	<label for="enabled">
-		<g:message code="account.enabled.label" default="Enabled" />
+
+
+
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} required">
+	<label class="col-sm-2 control-label" for="accountLocked">
+		<g:message code="account.accountLocked.label" default="สถานะผู้ใช้" />
 		
 	</label>
-	<g:checkBox name="enabled" value="${accountInstance?.enabled}" />
+	<div class="col-sm-10">
+		<g:if test="${!accountInstance}">
+		<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="${com.swd.Role?.findByAuthority(com.swd.AccountRole?.findByAccount(accountInstance).role).id}" class="many-to-one chosen-select" style="width:100%;"/>
+	</g:if>
+	<g:else>
+	<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="" class="many-to-one chosen-select" style="width:100%;"/>
+</g:else>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'name', 'error')} required">
-	<label for="name">
-		<g:message code="account.name.label" default="Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="name" required="" value="${accountInstance?.name}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'passwordExpired', 'error')} ">
-	<label for="passwordExpired">
-		<g:message code="account.passwordExpired.label" default="Password Expired" />
-		
-	</label>
-	<g:checkBox name="passwordExpired" value="${accountInstance?.passwordExpired}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'requistions', 'error')} ">
-	<label for="requistions">
-		<g:message code="account.requistions.label" default="Requistions" />
-		
-	</label>
 	
-<ul class="one-to-many">
-<g:each in="${accountInstance?.requistions?}" var="r">
-    <li><g:link controller="requistion" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="requistion" action="create" params="['account.id': accountInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'requistion.label', default: 'Requistion')])}</g:link>
-</li>
-</ul>
-
-
+<script type="text/javascript">
+$(document).ready( function(){
+	$(".chosen-select").chosen({no_results_text: "Oops, nothing found!"});     
+});
+</script>
 </div>
+</div>
+
+
+<div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} required">
+	<label class="col-sm-2 control-label" for="accountLocked">
+		<g:message code="account.accountLocked.label" default="บัญชีที่โดนบล็อค" />
+		
+	</label>
+ 	<div class="col-sm-10">
+		<g:checkBox name="accountLocked" value="${accountInstance?.accountLocked}" />
+	</div>
+</div>
+
+
+
+
 
