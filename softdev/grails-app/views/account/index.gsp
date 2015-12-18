@@ -9,16 +9,26 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+		<div>
+			<div class="col-md-10" style="font-size:150%">
+				<h1><g:message code="default.list.label" args="[entityName]"/></h1>
+			</div>
+			<div class="col-md-2">
+				<h1><g:link class="btn btn-info" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+				</h1>
+			</div>
+		</div>
+		<div>
+			<g:if test="${flash.message}">
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					${flash.message}
+				</div>
+			</g:if>
 		</div>
 		<div id="list-account" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			
+
 			<table class="table table-striped">
 			<thead>
 					<tr>

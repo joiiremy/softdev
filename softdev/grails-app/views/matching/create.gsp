@@ -8,9 +8,14 @@
 	<body>
 		<div id="matching.add.equipment.label" class="content scaffold-create" role="main">
 			<h1><g:message code="matching.add.equipment.label"default="Add Equipment" /></h1>
+
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="alert alert-danger alert-dismissible" role="status">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					${flash.message}
+				</div>
 			</g:if>
+
 			<g:hasErrors bean="${matchingInstance}">
 			<ul class="errors" role="alert">
 				<g:eachError bean="${matchingInstance}" var="error">

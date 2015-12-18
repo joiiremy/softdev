@@ -28,7 +28,7 @@
 					<g:select class="my_select_box form-control" noSelection="['':'-All Account-']" optionKey="id" optionValue="name" name="accountId" from="${accounts}" value="${accountId}"/>
 					<g:select class="my_select_box form-control" noSelection="['':'-All Equipment-']" optionKey="id" optionValue="title" name="equipmentId" from="${equipments}" value="${equipmentId}"/>
 				</div> --}%
-				<g:checkBox name="notreturn" value="${notreturn}"/> not return
+				<g:checkBox name="notreturn" value="${notreturn}"/> รายการที่ยังไม่คืน
 				&emsp;<g:actionSubmit value="Search" action="history" class="btn btn-info"/>
 				<g:link class="btn btn-warning" action="history"  params="[accountId: '',equipmentId:'']">
 		        	Clear

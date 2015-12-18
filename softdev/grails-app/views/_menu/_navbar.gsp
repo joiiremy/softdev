@@ -46,7 +46,7 @@
       <g:set var="sizeOfApproved" value="${Requistion.findAllByApproved('').size()}" />
         
 
-        <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }">
+     %{--    <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }"> --}%
           <li class="${ params.action == "index" && params.controller == 'equipment' ? 'active' : '' }" >
             <a href="${createLink(controller: 'Equipment', action: 'index')}"> คลังสินค้า/แก้ไข
             </a>
@@ -63,7 +63,7 @@
               </g:if>     
             </a>
           </li>
-        </g:if>
+        %{-- </g:if> --}%
       </sec:ifAnyGranted>
 
   </ul>

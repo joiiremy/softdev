@@ -7,11 +7,12 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class MatchingController {
-
+    def backendService
+    
     static allowedMethods = [save: "POST", update: "PUT", delete: "PUT"]
     // static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def requistionAdded(){
+def requistionAdded(){
         render(template: 'matching', model:[matching:Matching.get(params.id)])
     }
 
@@ -43,12 +44,30 @@ class MatchingController {
 
     @Transactional
     def save(Matching matchingInstance) {
-        log.debug "hello"
+        log.debug "hello" + matchingInstance.requistion.id
         if (matchingInstance == null) {
             notFound()
             return
         }
-        
+    def equipmentLists = backendService.queryMatching()
+    print "-----------"+equipmentLists
+        def amountOfEq = equipmentLists.find{it.id == matchingInstance.equipment.id}?.amount
+        def eq = Equipment.get(matchingInstance.equipment.id).amount
+        if(eq < matchingInstance.amount){
+             flash.message = message(code: 'default.errorMoreTotal.message', default: 'More Value having now')
+             redirect controller: "matching", action: "create" , id:matchingInstance.requistion.id
+             return
+        }
+        // else if(amountOfEq==null){
+        //     flash.message = message(code: 'default.errorCreate.message', default: 'EROR')
+        //     redirect controller: "matching", action: "create" , id:matchingInstance.requistion.id
+        //     return
+        // }
+        if(matchingInstance.amount<=0){
+            flash.message = message(code: 'default.errorCreate.message', default: 'Value illigal')
+            redirect controller: "matching", action: "create" , id:matchingInstance.requistion.id
+            return
+        }
         if (matchingInstance.hasErrors()) {
             respond matchingInstance.errors, view:'create'
             return

@@ -24,7 +24,10 @@ class AccountController {
     }
 
     @Transactional
-    def save(Account accountInstance) {
+    def save(Account accountInstance,Integer roleId) {
+
+        log.debug roleId
+
         if (accountInstance == null) {
             notFound()
             return
@@ -37,6 +40,9 @@ class AccountController {
 
         accountInstance.save flush:true
 
+        def accountRole = new AccountRole(account:accountInstance, role:Role.load(roleId))
+        accountRole.save()
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), accountInstance.id])
@@ -47,11 +53,11 @@ class AccountController {
     }
 
     def edit(Account accountInstance) {
-        respond accountInstance
+        respond accountInstance, model:[roleId: Role?.findByAuthority(com.swd.AccountRole?.findByAccount(accountInstance).role).id]
     }
 
     @Transactional
-    def update(Account accountInstance) {
+    def update(Account accountInstance,Integer roleId ) {
         if (accountInstance == null) {
             notFound()
             return
@@ -62,7 +68,17 @@ class AccountController {
             return
         }
 
-        accountInstance.save flush:true
+        AccountRole.executeUpdate("update AccountRole ar set ar.role=:r_id where ar.account=:user", [r_id: Role.get(roleId), user: accountInstance])
+        // return 
+        // accountInstance.save flush:true
+
+        // def rid = AccountRole.findByAccount(accountInstance).id
+        // def accountRole = AccountRole.findByAccount(accountInstance)
+        // log.debug rid
+        // accountRole.role = Role.get(roleId)
+        // log.debug "---->"+Role.get(roleId)
+        // accountRole.save()
+
 
         request.withFormat {
             form multipartForm {
@@ -80,6 +96,9 @@ class AccountController {
             notFound()
             return
         }
+
+        def accountRole = AccountRole.findByAccount(accountInstance)
+        accountRole.delete flush:true
 
         accountInstance.delete flush:true
 

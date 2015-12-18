@@ -9,6 +9,8 @@
 	<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
+	%{-- <g:set var="backend" bean="backendService"/>
+	<g:set var="equipmentLists" value="${backend.queryMatching()}"/> --}%
 	<div id="list-equipment" class="content scaffold-list" role="main">
 		<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 		<g:if test="${flash.message}">
@@ -24,16 +26,12 @@
 				<g:sortableColumn property="unit" title="${message(code: 'equipment.unit.label', default: 'Unit')}" />	
 
 				<g:sortableColumn property="amount" title="${message(code: 'equipment.amount.label', default: 'Amount')}" />
-
-
+				%{-- <g:sortableColumn property="used" title="${message(code: 'equipment.used.label', default: 'used')}"/> --}%
+				<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'Total')}"/>
 				<g:sortableColumn property="price" title="${message(code: 'equipment.price.label', default: 'Price')}" />
 
 				<g:sortableColumn property="description" title="${message(code: 'equipment.description.label', default: 'Description')}" />
-
-				<g:sortableColumn property=" " title=" "/>
-
-
-
+				<g:sortableColumn property="amount" title="${message(code: 'equipment.Alert.label', default: 'Alert')}" />
 			</tr>
 		</thead>
 		<tbody>
@@ -44,22 +42,36 @@
 				<td>${fieldValue(bean: equipmentInstance, field: "title")}</td>
 				
 				<td>${fieldValue(bean: equipmentInstance, field: "unit")}</td>
-
 				<td>${fieldValue(bean: equipmentInstance, field: "amount")}</td>
+				%{-- <td>
 
+			
+			
+					${amountOfEq?:0 }
+				</td>
+ --}%
 				<td>
-			<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
-					${equipmentInstance.amount - (amountOfEq?:0)} 
-
+					<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
+					${equipmentInstance.amount - (amountOfEq?:0)}
 				</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "price")}</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "description")}</td>
+				<td>
+					<g:set var="amountAlertEmpty" value="${equipmentInstance.amount - (amountOfEq?:0) <=0 ? true:false}" />
+					<g:set var="amountAlert" value="${equipmentInstance.amount - (amountOfEq?:0) <= 50 ? true:false}" />
+					<g:if test="${amountAlertEmpty}">
+						${message(code: 'equipment.AlertEmpty.label', default: 'Empty!!')}
+					</g:if>
+					<g:elseif test="${amountAlert}">
+						${message(code: 'equipment.AlertLess.label', default: 'Less!!')}
+					</g:elseif>
+				</td>
 				<td >
 					<div class="pull-right">
 						<g:form url="[resource:equipmentInstance, action:'delete']" method="DELETE">
-						
+
 						<g:link class="btn btn-warning" action="edit" id="${equipmentInstance.id}">${message(code: 'default.button.edit.label', default: 'Edit')}
 
 						</g:link>
@@ -71,6 +83,7 @@
 			</g:each>
 		</tbody>
 </table>
+
 <div class="pagination">
 	<g:paginate total="${equipmentInstanceCount ?: 0}" />
 </div>

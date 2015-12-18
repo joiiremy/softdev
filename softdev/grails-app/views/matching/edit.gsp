@@ -11,6 +11,13 @@
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
+			<g:if test="${flash.message}">
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					${flash.message}
+				</div>
+
+			</g:if>
 			</g:if>
 			<g:hasErrors bean="${matchingInstance}">
 			<ul class="errors" role="alert">
