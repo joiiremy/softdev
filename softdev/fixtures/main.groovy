@@ -31,6 +31,16 @@ fixture {
 	user24(Account, username: "อ. วรพรต ชูกำเนิด", name:"อ. วรพรต ชูกำเนิด", barcode: "1234", password: "1234")
 	user25(Account, username: "อ. สุธน แซ่ว่อง", name:"อ. สุธน แซ่ว่อง", barcode: "1234", password: "1234")
 	user26(Account, username: "อ. เสกสรรค์ สุวรรณมณี", name:"อ. เสกสรรค์ สุวรรณมณี", barcode: "1234", password: "1234")
+	user27(Account, username: "นางสาว ณ.ชนม์ ประยูรวงศ์", name:"นางสาว ณ.ชนม์ ประยูรวงศ์", barcode: "1234", password: "1234")
+	user28(Account, username: "คุณ บงกช พฤกษพงษ์", name:"คุณ บงกช พฤกษพงษ์", barcode: "1234", password: "1234")
+	user29(Account, username: "คุณ นวลวรรณ พลพงษ์", name:"คุณ นวลวรรณ พลพงษ์", barcode: "1234", password: "1234")
+	user30(Account, username: "คุณ วิมล คำจันทร์", name:"คุณ วิมล คำจันทร์", barcode: "1234", password: "1234")
+	user31(Account, username: "คุณ อนุชา รัตนะ", name:"คุณ อนุชา รัตนะ", barcode: "1234", password: "1234")
+	user32(Account, username: "คุณ ไพบูลย์ บุญถวิล", name:"คุณ ไพบูลย์ บุญถวิล", barcode: "1234", password: "1234")
+	user33(Account, username: "คุณ พิพัฒน์ พิพิธพัฒนพงศ์", name:"คุณ พิพัฒน์ พิพิธพัฒนพงศ์", barcode: "1234", password: "1234")
+	user34(Account, username: "นาย รุ่งโรจน์ แซ่จุ้ง", name:"นาย รุ่งโรจน์ แซ่จุ้ง", barcode: "1234", password: "1234")
+	user35(Account, username: "นาย วรรษิษฐ์ ศิริลักษณ์", name:"นาย วรรษิษฐ์ ศิริลักษณ์", barcode: "1234", password: "1234")
+	user36(Account, username: "คุณ อนันต์ นิลโกสีย์", name:"คุณ อนันต์ นิลโกสีย์", barcode: "1234", password: "1234")
 
 	user_role_admin(AccountRole, account: user_admin, role: role_admin)
 	user_role_user01(AccountRole, account: user01, role: role_user)
@@ -59,6 +69,16 @@ fixture {
 	user_role_user24(AccountRole, account: user24, role: role_user)
 	user_role_user25(AccountRole, account: user25, role: role_user)
 	user_role_user26(AccountRole, account: user26, role: role_user)
+	user_role_user27(AccountRole, account: user27, role: role_user)
+	user_role_user28(AccountRole, account: user28, role: role_user)
+	user_role_user29(AccountRole, account: user29, role: role_user)
+	user_role_user30(AccountRole, account: user30, role: role_user)
+	user_role_user31(AccountRole, account: user31, role: role_user)
+	user_role_user32(AccountRole, account: user32, role: role_user)
+	user_role_user33(AccountRole, account: user33, role: role_user)
+	user_role_user34(AccountRole, account: user34, role: role_user)
+	user_role_user35(AccountRole, account: user35, role: role_user)
+	user_role_user36(AccountRole, account: user36, role: role_user)
 	//in stock  punha type kong
 
 
