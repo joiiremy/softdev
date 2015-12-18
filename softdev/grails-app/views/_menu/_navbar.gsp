@@ -5,18 +5,18 @@
       <sec:ifAnyGranted roles="ROLE_ADMIN">
         
         <a class="navbar-brand"  href="${createLink(controller: 'home', action: 'admin')}">
-        <img src = "${assetPath(src: 'home.png')}" width="40" height="40"></a>        
+        <img src = "${assetPath(src: 'home.png')}" width="30" height="25"></a>        
       </sec:ifAnyGranted>
       <sec:ifAnyGranted roles="ROLE_USER">
         
         <a class="navbar-brand" href="${createLink(controller: 'requistion', action: 'create')}">
-        <img src = "${assetPath(src: 'home.png')}" width="40" height="40">
+        <img src = "${assetPath(src: 'home.png')}" width="30" height="25">
         </a>
       </sec:ifAnyGranted>
       <sec:ifNotGranted roles="ROLE_ADMIN,ROLE_USER">
         
         <a class="navbar-brand" href="${createLink(uri: '/')}">
-        <img src = "${assetPath(src: 'home.png')}" width="40" height="40">
+        <img src = "${assetPath(src: 'home.png')}" width="30" height="25">
         </a>
       </sec:ifNotGranted>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
