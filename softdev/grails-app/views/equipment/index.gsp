@@ -27,7 +27,7 @@
 
 				<g:sortableColumn property="amount" title="${message(code: 'equipment.amount.label', default: 'Amount')}" />
 				%{-- <g:sortableColumn property="used" title="${message(code: 'equipment.used.label', default: 'used')}"/> --}%
-				<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'total')}"/>
+				<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'Total')}"/>
 				<g:sortableColumn property="price" title="${message(code: 'equipment.price.label', default: 'Price')}" />
 
 				<g:sortableColumn property="description" title="${message(code: 'equipment.description.label', default: 'Description')}" />
