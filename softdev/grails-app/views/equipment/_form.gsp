@@ -33,10 +33,9 @@
 <div class="form-group form-group fieldcontain ${hasErrors(bean: equipmentInstance, field: 'barcode', 'error')} required">
 	<label for="barcode" class="col-sm-2 control-label">
 		<g:message code="equipment.barcode.label" default="Barcode" />
-		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-		<g:textField class="form-control" placeholder="${message(code: 'equipment.barcode.label', default: 'Barcode')}" name="barcode" required="" value="${equipmentInstance?.barcode}"/>
+		<g:textField class="form-control" placeholder="${message(code: 'equipment.barcode.label', default: 'Barcode')}" name="barcode" value="${equipmentInstance?.barcode}"/>
 	</div>
 </div>
 

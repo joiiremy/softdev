@@ -13,17 +13,20 @@ class RequistionController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def borrowerId = params.j_username
-        def notreturn = params.notreturn == 'on' ? true : false
+        def account 
+        def id = borrowerId != "" ? borrowerId?.toInteger() : 0
+        def notreturn = params.notreturn == 'on' ? false : true
+        print notreturn
         def requistionList = Requistion.createCriteria().list(){
             if(borrowerId){
                 like "borrower", Account.get(borrowerId)
-                if(notreturn){
+                if(!notreturn){
                     like "isReturn", notreturn
                 }
             }
         }
 
-        respond requistionList, model:[requistionInstanceCount: Requistion.count(), notreturn: notreturn]
+        respond requistionList, model:[requistionInstanceCount: Requistion.count(), notreturn: !notreturn, id: id]
     }
     def isReturn(Integer id, Boolean isreturn){
         def requistion = Requistion.get(id)

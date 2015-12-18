@@ -17,29 +17,18 @@ def springSecurityService
     }
     def history() { 
     	def accountId = springSecurityService.principal.id
+        def notreturn = params.notreturn == 'on' ? false : true
+        print notreturn
         def requistionList = Requistion.createCriteria().list{
 	    		borrower{
 		        	idEq accountId
 		        }
-                if(params.notreturn){
-                    print "in"
-                    isNull("returnDate")
+                if(!notreturn){
+                    like "isReturn", notreturn
                 }
 
     		}	
-        // print params.notreturn
-        // print requistionList
-
-       // def returnDate 
-       // def requistionList = Requistion.createCriteria().list{
-       //      if(params.long("accountId")){
-
-
-       //      }
-
-       // }     
-
-        // def checkoutQuestionInstanceCount = CheckoutQuestion.createCriteria().list(query).size()
+        
     	[
             requistionList : requistionList, notreturn: params.notreturn, matching: Matching.list() ,accounts : Account.list(),accountId: accountId ]
     }

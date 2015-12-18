@@ -14,5 +14,6 @@ class Equipment {
     	description nullable: true
     	unit nullable: true
     	price nullable: true
+    	barcode nullable: true
     }
 }

@@ -28,7 +28,7 @@
 			<div class="col-md-4">
 				<h6>
 					<g:form >
-					<g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="id" optionValue="name" required="" style="width:30%;" value="${requistionInstance?.borrower?.id}" />
+					<g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="id" optionValue="name" required="" style="width:30%;" value="${id}" />
 					&emsp;
 					<g:checkBox name="notreturn" value="${notreturn}"/> not return
 						<g:actionSubmit value="Search" action="index" class="btn btn-info"/>
