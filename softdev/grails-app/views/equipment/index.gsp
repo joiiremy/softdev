@@ -12,7 +12,7 @@
 	%{-- <g:set var="backend" bean="backendService"/>
 	<g:set var="equipmentLists" value="${backend.queryMatching()}"/> --}%
 	<div id="list-equipment" class="content scaffold-list" role="main">
-		<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+		<h3><g:message code="default.list.label" args="[entityName]" /></h3>
 		<g:if test="${flash.message}">
 		<div class="message" role="status">${flash.message}</div>
 	</g:if>
@@ -83,10 +83,11 @@
 			</g:each>
 		</tbody>
 </table>
-
-<div class="pagination">
-	<g:paginate total="${equipmentInstanceCount ?: 0}" />
-</div>
+	<div align="center">
+		<div class="pagination">
+			<g:paginate total="${equipmentInstanceCount ?: 0}" />
+		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -34,7 +34,7 @@
 				line-height: 1.3;
 			}
 
-			#status h1 {
+			#status h3 {
 				text-transform: uppercase;
 				font-size: 1.1em;
 				margin: 0 0 0.3em;
@@ -74,7 +74,7 @@
 					margin: 0 1em 1em;
 				}
 
-				#page-body h1 {
+				#page-body h3 {
 					margin-top: 0;
 				}
 			}
@@ -83,7 +83,7 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Application Status</h1>
+			<h3>Application Status</h3>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>
 				<li>Grails version: <g:meta name="app.grails.version"/></li>
@@ -95,7 +95,7 @@
 				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
 				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
 			</ul>
-			<h1>Installed Plugins</h1>
+			<h3>Installed Plugins</h3>
 			<ul>
 				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
 					<li>${plugin.name} - ${plugin.version}</li>
@@ -103,7 +103,7 @@
 			</ul>
 		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
+			<h3>Welcome to Grails</h3>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			   content you may choose. Below is a list of controllers that are currently deployed in this application,

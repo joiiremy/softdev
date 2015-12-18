@@ -55,7 +55,11 @@
         
 
      %{--    <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }"> --}%
-          <li class="${ params.action == "index" && params.controller == 'equipment' ? 'active' : '' }" >
+          <li class="${ params.controller == 'account' ? 'active' : '' }" >
+            <a href="${createLink(controller: 'Account', action: 'index')}"> จัดการบัญชี
+            </a>
+          </li> 
+          <li class="${( params.action == "index" || params.action == "edit" || params.action == "show")&& params.controller == 'equipment' ? 'active' : '' }" >
             <a href="${createLink(controller: 'Equipment', action: 'index')}"> คลังสินค้า/แก้ไข
             </a>
           </li> 
