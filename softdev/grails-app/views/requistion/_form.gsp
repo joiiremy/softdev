@@ -83,7 +83,7 @@
 		<g:message code="requistion.matchings.label" default="Matchings" />	
 	</label>
 	<div class="col-sm-10">
-		<g:actionSubmit  class="btn btn-default btn-lg " action="addMatching" id='${requistionInstance?.id}' value="${message(code: 'matching.add.equipment.label')}"/>	
+		<g:actionSubmit  class="btn btn-default btn-lg " action="addMatching" id='${requistionInstance?.id}' value="${message(code: 'matching.add.equipment.label',default: 'Add Equipment')}"/>	
 		
 		%{-- <g:link class="btn btn-default btn-lg" action="addMatching" id='${requistionInstance?.id}'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
 		<g:message code="matching.add.equipment.label" default="Add Equipment" />	
@@ -116,7 +116,7 @@
 		</button> 
     </g:if>
     <g:elseif test="${params.action== 'create'}">
-         <g:submitButton name="create" class="save btn btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+         <g:submitButton disabled="${id == NULL}" name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
     </g:elseif>
 	
 

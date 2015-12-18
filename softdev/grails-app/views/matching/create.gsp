@@ -2,15 +2,17 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'matching.label', default: 'Matching')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
+%{-- 		<g:set var="entityName" value="${message(code: 'matching.label', default: 'Matching')}" /> --}%
+		<title><g:message code="matching.add.equipment.label" default="Add Equipment"/></title>
 	</head>
 	<body>
-		<div id="create-matching" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+		<div id="matching.add.equipment.label" class="content scaffold-create" role="main">
+			<h1><g:message code="matching.add.equipment.label"default="Add Equipment" /></h1>
+			
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
 			<g:hasErrors bean="${matchingInstance}">
 			<ul class="errors" role="alert">
 				<g:eachError bean="${matchingInstance}" var="error">

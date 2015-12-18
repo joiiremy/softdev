@@ -68,10 +68,16 @@ $(document).ready( function(){
 </div>
 </div>
 
+<<<<<<< HEAD
 
 <div class="form-group form-group fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} required">
 	<label class="col-sm-2 control-label" for="accountLocked">
 		<g:message code="account.accountLocked.label" default="บัญชีที่โดนบล็อค" />
+=======
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'requistions', 'error')} ">
+	<label for="requistions">
+		<g:message code="requistion.label" default="Requistions" />
+>>>>>>> origin/master
 		
 	</label>
  	<div class="col-sm-10">

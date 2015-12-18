@@ -1,5 +1,6 @@
 
 <%@ page import="com.swd.Account" %>
+<%@ page import="com.swd.AccountRole" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,10 +9,8 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-account" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -25,10 +24,12 @@
 					<tr>
 					
 						<g:sortableColumn property="username" title="${message(code: 'account.username.label', default: 'Username')}" />
-					
+						
+						<g:sortableColumn property="name" title="${message(code: 'account.name.label', default: 'Name')}" />
 						
 						<g:sortableColumn property="barcode" title="${message(code: 'account.barcode.label', default: 'Barcode')}" />
-					
+						
+						<g:sortableColumn property="barcode" title="${message(code: 'account.role.label', default: 'Role')}" />
 						
 					
 					</tr>
@@ -39,12 +40,11 @@
 					
 						<td><g:link action="show" id="${accountInstance.id}">${fieldValue(bean: accountInstance, field: "username")}</g:link></td>
 					
-						
-					
-						
-					
+						<td>${fieldValue(bean: accountInstance, field: "name")}</td>
+
 						<td>${fieldValue(bean: accountInstance, field: "barcode")}</td>
-					
+						
+						<td>${AccountRole.findAllByAccount(accountInstance).role[0]}</td>
 						
 						<td >
 						<div class="pull-right">

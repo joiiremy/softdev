@@ -8,7 +8,6 @@
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
-	
 
 
 	<div id="show-equipment" class="content scaffold-show" role="main">

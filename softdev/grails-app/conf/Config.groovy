@@ -143,6 +143,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
    '/equipment/**':       ['permitAll'],
    '/requistion/**':       ['permitAll'],
    '/matching/**':       ['permitAll'],
+   '/**/**':       ['ROLE_ADMIN'],
    '/assets/**':       ['permitAll'],
    '/**/js/**':        ['permitAll'],
    '/**/css/**':       ['permitAll'],
@@ -165,3 +166,4 @@ jodatime.format.html5 = true
 // 	'/**/favicon.ico':  ['permitAll']
 // ]
 
+grails.plugins.twitterbootstrap.fixtaglib = true
