@@ -100,7 +100,7 @@
 			<tbody class="addMember">
 			<g:if test="${requistionInstance?.id}">
 
-			<g:set var="matchings" value="${Requistion.get(requistionInstance.id).matchings}" />
+			<g:set var="matchings" value="${Requistion.get(requistionInstance.id).matchings}"/>
 				<g:each var="matching" in="${matchings}">
 					<g:render template="/matching/matching" model="['matching': matching]"/>
 				</g:each>
