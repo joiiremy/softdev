@@ -23,15 +23,6 @@
   <ul class="nav navbar-nav">
 
       <sec:ifAnyGranted roles="ROLE_USER">
-      <li class="dropdown">
-            <a href="${createLink(uri: '/')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MENU <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="${createLink(controller: 'requistion', action: 'create')}">
-                ${message(code: 'requistion.borrow.label', default: 'Requestion')}</a></li>
-            %{--   <li><a href="${createLink(controller: 'requistionFront', action: 'returns')}">คืน</a></li> --}%
-              <li><a href="${createLink(controller: 'requistionFront', action: 'history')}">ประวัติ</a></li>
-            </ul>
-      </li>
 
       <g:if test="${ params.controller == 'requistionFront' || params.controller == 'requistion' }">
         <li class="${ params.action == "create" ? 'active' : '' }" >
@@ -53,24 +44,9 @@
 
       <sec:ifAnyGranted roles="ROLE_ADMIN">
       <g:set var="sizeOfApproved" value="${Requistion.findAllByApproved('').size()}" />
-         <li class="dropdown">
-            <a href="${createLink(uri: '/')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MENU <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="${createLink(controller: 'Equipment', action: 'index')}"> คลังสินค้า/แก้ไข
-            </a></li>
-              <li><a href="${createLink(controller: 'Equipment', action: 'create')}"> เพิ่มสินค้า
-            </a></li>
-              <li><a href="${createLink(controller: 'Requistion', action: 'index')}">
-              สถิติ / ประวัติการยืมสินค้า  
-              <g:if test="${sizeOfApproved != 0}">
-                <span class="badge progress-bar-warning">${sizeOfApproved}</span>   
-              </g:if>
+        
 
-            </a></li>
-            </ul>
-        </li>
-
-        <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }">
+     %{--    <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }"> --}%
           <li class="${ params.action == "index" && params.controller == 'equipment' ? 'active' : '' }" >
             <a href="${createLink(controller: 'Equipment', action: 'index')}"> คลังสินค้า/แก้ไข
             </a>
@@ -87,7 +63,7 @@
               </g:if>     
             </a>
           </li>
-        </g:if>
+        %{-- </g:if> --}%
       </sec:ifAnyGranted>
 
   </ul>

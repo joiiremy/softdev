@@ -93,6 +93,9 @@ class AccountController {
             notFound()
             return
         }
+        
+        def accountRole = AccountRole.findByAccount(accountInstance)
+        accountRole.delete flush:true
 
         accountInstance.delete flush:true
 

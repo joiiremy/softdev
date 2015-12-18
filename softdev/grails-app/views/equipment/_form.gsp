@@ -6,10 +6,9 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-	<g:textField class="form-control" placeholder="${message(code: 'equipment.title.label', default: 'Title')}" name="title" required="" value="${equipmentInstance?.title}" />
+		<g:textField class="form-control" placeholder="${message(code: 'equipment.title.label', default: 'Title')}" name="title" required="" value="${equipmentInstance?.title}" />
 	</div>
 </div>
-
 
 <div class="form-group form-group-lg fieldcontain ${hasErrors(bean: equipmentInstance, field: 'description', 'error')} ">
 	<label for="description" class="col-sm-2 control-label">
@@ -17,7 +16,7 @@
 		
 	</label>
 	<div class="col-sm-10">
-	<g:textField class="form-control" placeholder="${message(code: 'equipment.description.label', default: 'Description')}" name="description" value="${equipmentInstance?.description}"/>
+		<g:textField class="form-control" placeholder="${message(code: 'equipment.description.label', default: 'Description')}" name="description" value="${equipmentInstance?.description}"/>
 	</div>
 </div>
 
@@ -27,7 +26,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-	<g:field class="form-control" placeholder="${message(code: 'equipment.amount.label', default: 'Amount')}" name="amount" type="number" value="${equipmentInstance.amount}" required=""/>
+		<g:field class="form-control" placeholder="${message(code: 'equipment.amount.label', default: 'Amount')}" name="amount" type="number" value="${equipmentInstance.amount}" required=""/>
 	</div>
 </div>
 
@@ -37,7 +36,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-	<g:textField class="form-control" placeholder="${message(code: 'equipment.barcode.label', default: 'Barcode')}" name="barcode" required="" value="${equipmentInstance?.barcode}"/>
+		<g:textField class="form-control" placeholder="${message(code: 'equipment.barcode.label', default: 'Barcode')}" name="barcode" required="" value="${equipmentInstance?.barcode}"/>
 	</div>
 </div>
 
@@ -47,7 +46,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="col-sm-10">
-	<g:field class="form-control" placeholder="${message(code: 'equipment.price.label', default: 'Price')}" name="price" value="${fieldValue(bean: equipmentInstance, field: 'price')}" required=""/>
+		<g:field class="form-control" placeholder="${message(code: 'equipment.price.label', default: 'Price')}" name="price" value="${fieldValue(bean: equipmentInstance, field: 'price')}" required=""/>
 	</div>
 </div>
 
