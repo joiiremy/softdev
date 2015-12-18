@@ -43,7 +43,7 @@
         </li>  --}%
         <li class="${ params.action == "history" ? 'active' : '' }">
           <a href="${createLink(controller: 'requistionFront', action: 'history')}">
-            ประวัติ        
+            ${message(code: 'requistion.history.label', default: 'History')}        
           </a>
         </li>
       </g:if>
