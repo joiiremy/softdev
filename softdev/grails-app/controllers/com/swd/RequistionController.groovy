@@ -12,9 +12,26 @@ class RequistionController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Requistion.list(params), model:[requistionInstanceCount: Requistion.count()]
-    }
+        def borrowerId = params.j_username
+        def notreturn = params.notreturn == 'on' ? true : false
+        def requistionList = Requistion.createCriteria().list(){
+            if(borrowerId){
+                like "borrower", Account.get(borrowerId)
+                if(notreturn){
+                    like "isReturn", notreturn
+                }
+            }
+        }
 
+        respond requistionList, model:[requistionInstanceCount: Requistion.count(), notreturn: notreturn]
+    }
+    def isReturn(Integer id, Boolean isreturn){
+        def requistion = Requistion.get(id)
+        requistion.isReturn = isreturn
+        requistion.endorser = Account.get(springSecurityService.principal.id)
+        requistion.save(flush:true)
+        redirect action :'index'
+    }
     def isApproved(Integer id, Boolean approved){
         def requistion = Requistion.get(id)
         log.debug id 
@@ -24,7 +41,7 @@ class RequistionController {
         requistion.endorser = Account.get(springSecurityService.principal.id)
         requistion.save(flush:true)
         log.debug requistion.approved
-        redirect action :'show', id:id
+        redirect action :'index'
     }
     def addMatching(){
         def requistionId

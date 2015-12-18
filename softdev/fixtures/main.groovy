@@ -251,11 +251,11 @@ fixture {
 
 	//end stock
 
-	r01(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user01, endorser: user_admin, approved : true)
-	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user02, endorser: user_admin)
-	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user03, endorser: user_admin, approved : false)
-	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user04, endorser: user_admin)
-	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), borrower: user05, endorser: user_admin, approved : true)
+	r01(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), isReturn: false, borrower: user01, endorser: user_admin, approved : true)
+	r02(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), isReturn: true, borrower: user02, endorser: user_admin)
+	r03(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), isReturn: false, borrower: user03, endorser: user_admin, approved : false)
+	r04(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), isReturn: false, borrower: user04, endorser: user_admin)
+	r05(Requistion, requistionDate :new LocalDate(), returnDate :new LocalDate().plusDays(7), isReturn: false, borrower: user05, endorser: user_admin, approved : true)
 	
 	m01(Matching, equipment: e01,requistion: r01, amount: 2)
 	m01_2(Matching, equipment: e01,requistion: r02, amount: 4)

@@ -1,5 +1,7 @@
 
 <%@ page import="com.swd.Requistion" %>
+<%@ page import="com.swd.Account" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,13 +10,36 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 
 	</head>
+
 	<body>
-		%{-- <g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link> --}%
+		<script type="text/javascript">
+		$( document ).ready(function() {
+  			$(".chosen-select").chosen({no_results_text: "Oops, nothing found!"}); 
+		});	
+		</script>
+
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>
 		<div id="list-requistion" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			<div class="col-md-8">
+				<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			</div>
+			<div class="col-md-4">
+				<h6>
+					<g:form >
+					<g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="id" optionValue="name" required="" style="width:30%;" value="${requistionInstance?.borrower?.id}" />
+					&emsp;
+					<g:checkBox name="notreturn" value="${notreturn}"/> not return
+						<g:actionSubmit value="Search" action="index" class="btn btn-info"/>
+						<g:link class="btn btn-warning" action="index"  params="[j_username: '',notreturn:'']">
+				        	Clear
+				       	</g:link>
+						
+					</g:form>
+				</h6>
+			</div>
+         
 			<table class="table table-striped">
 			<thead>
 					<tr>
@@ -27,6 +52,10 @@
 						<th><g:message code="requistion.endorser.label" default="Endorser" /></th>
 					
 						<g:sortableColumn property="approved" title="${message(code: 'requistion.approved.label', default: 'Approved')}" />
+
+						<th><g:message code="requistion.isReturn.label" default="Return" /></th>
+
+
 					
 					
 					</tr>
@@ -49,6 +78,15 @@
 								<g:isApproved test="${fieldValue(bean: requistionInstance, field: "approved")}"></g:isApproved>
 							</g:link>
 						</td>
+
+						<td>
+							<g:link action="show" id="${requistionInstance.id}">
+								<g:isReturn test="${fieldValue(bean: requistionInstance, field: "isReturn")}"></g:isReturn>
+							</g:link>
+
+							</td>
+
+						%{-- <td>${fieldValue(bean: requistionInstance, field: "isReturn")}</td> --}%
 					
 					
 					</tr>

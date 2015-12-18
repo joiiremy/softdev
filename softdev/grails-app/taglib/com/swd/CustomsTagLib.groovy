@@ -22,4 +22,19 @@ class CustomsTagLib {
     	}
     	out << """<span class="${tags}">${text}</span>"""
     }
+
+    def isReturn = {attrs, body ->
+        def tags
+        def text
+        def operation = attrs.test.toString() 
+        if(operation == 'true'){
+            tags = "label label-success"
+            text = "คืน"
+        }
+        else if(operation == 'false'){
+            tags = "label label-warning"
+            text = "ยัง "
+        }
+        out << """<span class="${tags}">${text}</span>"""
+    }
 }

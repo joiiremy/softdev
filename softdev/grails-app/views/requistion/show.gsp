@@ -95,11 +95,14 @@
       %{-- ADMIN CAN CONFIRM APPORVED ONLY --}%
 
         <g:set var="isApproved" value="${requistionInstance?.approved.toString()}" />
-            <g:link class="btn btn-info pull-right" action="isApproved" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[approved: true]"><g:message code="default.button.approved.label" default="Approved" /></g:link>
+
+          <g:link class="btn btn-info pull-right" action="isApproved" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[approved: true]"><g:message code="default.button.approved.label" default="Approved" /></g:link>
            
           <g:if test="${isApproved != 'false'}">
           <g:link class="btn btn-danger pull-right" action="isApproved" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[approved: false]"><g:message code="default.button.notApproved.label" default="Not Approved" /></g:link>
           </g:if> 
+
+          <g:link class="btn btn-warning pull-right" action="isReturn" resource="${requistionInstance}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" params="[isreturn: true]"><g:message code="default.button.return.label" default="Return" /></g:link>
 
 
 
