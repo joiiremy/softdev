@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<b><h1 class = "text-center">ยืม</h1></b>
+					<b><h3 class = "text-center">ยืม</h3></b>
 				</div>
 			</div><br>
 			<form>
@@ -81,7 +81,7 @@
 %{-- ////////////////end from create /////////////// --}%
 <center>
 	<div id="create-requistion" class="content scaffold-create" role="main">
-		<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+		<h3><g:message code="default.create.label" args="[entityName]" /></h3>
 		<g:if test="${flash.message}">
 		<div class="message" role="status">${flash.message}</div>
 	</g:if>

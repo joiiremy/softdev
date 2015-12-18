@@ -10,12 +10,12 @@
 	</head>
 	<body>
 		<div>
-			<div class="col-md-10" style="font-size:150%">
-				<h1><g:message code="default.list.label" args="[entityName]"/></h1>
+			<div class="col-md-10">
+				<h3><g:message code="default.list.label" args="[entityName]"/></h3>
 			</div>
 			<div class="col-md-2">
-				<h1><g:link class="btn btn-info" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
-				</h1>
+				<h3><g:link class="btn btn-info" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+				</h3>
 			</div>
 		</div>
 		<div>
@@ -70,8 +70,10 @@
 				</g:each>
 				</tbody>
 			</table>
-			<div class="pagination">
-				<g:paginate total="${accountInstanceCount ?: 0}" />
+			<div align="center">
+				<div class="pagination">
+					<g:paginate total="${accountInstanceCount ?: 0}" />
+				</div>
 			</div>
 		</div>
 	</body>

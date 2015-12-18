@@ -3,13 +3,21 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <sec:ifAnyGranted roles="ROLE_ADMIN">
-        <a class="navbar-brand" href="${createLink(controller: 'home', action: 'admin')}">COE</a>
+        
+        <a class="navbar-brand"  href="${createLink(controller: 'home', action: 'admin')}">
+        <img src = "${assetPath(src: 'home.png')}" width="40" height="40"></a>        
       </sec:ifAnyGranted>
       <sec:ifAnyGranted roles="ROLE_USER">
-        <a class="navbar-brand" href="${createLink(controller: 'requistion', action: 'create')}">COE</a>
+        
+        <a class="navbar-brand" href="${createLink(controller: 'requistion', action: 'create')}">
+        <img src = "${assetPath(src: 'home.png')}" width="40" height="40">
+        </a>
       </sec:ifAnyGranted>
       <sec:ifNotGranted roles="ROLE_ADMIN,ROLE_USER">
-        <a class="navbar-brand" href="${createLink(uri: '/')}">COE</a>
+        
+        <a class="navbar-brand" href="${createLink(uri: '/')}">
+        <img src = "${assetPath(src: 'home.png')}" width="40" height="40">
+        </a>
       </sec:ifNotGranted>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -47,7 +55,11 @@
         
 
      %{--    <g:if test="${ params.controller == 'equipment' || params.controller == 'requistion' }"> --}%
-          <li class="${ params.action == "index" && params.controller == 'equipment' ? 'active' : '' }" >
+          <li class="${ params.controller == 'account' ? 'active' : '' }" >
+            <a href="${createLink(controller: 'Account', action: 'index')}"> จัดการบัญชี
+            </a>
+          </li> 
+          <li class="${( params.action == "index" || params.action == "edit" || params.action == "show")&& params.controller == 'equipment' ? 'active' : '' }" >
             <a href="${createLink(controller: 'Equipment', action: 'index')}"> คลังสินค้า/แก้ไข
             </a>
           </li> 

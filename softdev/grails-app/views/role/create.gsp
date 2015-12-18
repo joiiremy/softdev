@@ -14,9 +14,13 @@
 			</ul>
 		</div>
 		<div id="create-role" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h3><g:message code="default.create.label" args="[entityName]" /></h3>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					${flash.message}
+				</div>
+
 			</g:if>
 			<g:hasErrors bean="${roleInstance}">
 			<ul class="errors" role="alert">

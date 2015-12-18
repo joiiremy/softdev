@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="matching.add.equipment.label" class="content scaffold-create" role="main">
-			<h1><g:message code="matching.add.equipment.label"default="Add Equipment" /></h1>
+			<h3><g:message code="matching.add.equipment.label"default="Add Equipment" /></h3>
 
 			<g:if test="${flash.message}">
 			<div class="alert alert-danger alert-dismissible" role="status">

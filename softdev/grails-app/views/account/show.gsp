@@ -10,7 +10,7 @@
 	<body>
 
 		<div id="show-account" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h3><g:message code="default.show.label" args="[entityName]" /></h3>
 			<g:if test="${flash.message}">
 				<div class="alert alert-success alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

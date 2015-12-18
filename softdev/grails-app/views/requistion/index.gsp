@@ -22,22 +22,23 @@
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
 		<div id="list-requistion" class="content scaffold-list" role="main">
-			<div class="col-md-8">
-				<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<div class="col-md-6">
+				<h3><g:message code="default.list.label" args="[entityName]" /></h3>
 			</div>
-			<div class="col-md-4">
-				<h6>
+			<div class="col-md-6">
+				<h3 style="font-size:100%;font-weight: bold;">
 					<g:form >
 					<g:select class="panel-body chosen-select many-to-one" id="borrower" name="j_username" from="${com.swd.AccountRole.list().findAll{it.role.authority == 'ROLE_USER'}.account}" optionKey="id" optionValue="name" required="" style="width:30%;" value="${id}" />
 					&emsp;
-					<g:checkBox name="notreturn" value="${notreturn}"/> not return
+					<g:checkBox name="notreturn" value="${notreturn}"/> รายการที่ยังไม่คืน
+
 						<g:actionSubmit value="Search" action="index" class="btn btn-info"/>
 						<g:link class="btn btn-warning" action="index"  params="[j_username: '',notreturn:'']">
 				        	Clear
 				       	</g:link>
 						
 					</g:form>
-				</h6>
+				</h3>
 			</div>
          
 			<table class="table table-striped">
@@ -93,8 +94,10 @@
 				</g:each>
 				</tbody>
 			</table>
-			<div class="pagination">
-				<g:paginate total="${requistionInstanceCount ?: 0}" />
+			<div align="center">
+				<div class="pagination">
+					<g:paginate total="${requistionInstanceCount ?: 0}" />
+				</div>
 			</div>
 		</div>
 		
