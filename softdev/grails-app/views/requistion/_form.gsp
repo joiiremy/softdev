@@ -112,11 +112,11 @@
 	<!-- Button trigger modal -->
 	<g:if test="${params.action == 'edit'}">
         <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
-			 ${message(code: 'default.button.confirm.label', default: 'Confirm')}
+			 ${message(code: 'default.button.ok.label', default: 'OK')}
 		</button> 
     </g:if>
     <g:elseif test="${params.action== 'create'}">
-         <g:submitButton disabled="${id == NULL}" name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+         <g:submitButton disabled="${id == NULL}" name="create" class="save btn btn-success btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
     </g:elseif>
 	
 
