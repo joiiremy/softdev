@@ -88,7 +88,7 @@
         </a>
       </li>
     </sec:ifLoggedIn>
-
+<g:render template="/_menu/language"/>
   </ul>
   </div>
 </div>
