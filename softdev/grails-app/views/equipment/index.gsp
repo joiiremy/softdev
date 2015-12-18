@@ -26,12 +26,12 @@
 				<g:sortableColumn property="unit" title="${message(code: 'equipment.unit.label', default: 'Unit')}" />	
 
 				<g:sortableColumn property="amount" title="${message(code: 'equipment.amount.label', default: 'Amount')}" />
-				<g:sortableColumn property="used" title="${message(code: 'equipment.used.label', default: 'used')}"/>
+				%{-- <g:sortableColumn property="used" title="${message(code: 'equipment.used.label', default: 'used')}"/> --}%
 				<g:sortableColumn property="total" title="${message(code: 'equipment.total.label', default: 'total')}"/>
 				<g:sortableColumn property="price" title="${message(code: 'equipment.price.label', default: 'Price')}" />
 
 				<g:sortableColumn property="description" title="${message(code: 'equipment.description.label', default: 'Description')}" />
-				<g:sortableColumn property="description" title="${message(code: 'equipment.Alert.label', default: 'Alert')}" />
+				<g:sortableColumn property="amount" title="${message(code: 'equipment.Alert.label', default: 'Alert')}" />
 			</tr>
 		</thead>
 		<tbody>
@@ -43,13 +43,15 @@
 				
 				<td>${fieldValue(bean: equipmentInstance, field: "unit")}</td>
 				<td>${fieldValue(bean: equipmentInstance, field: "amount")}</td>
-				<td>
+				%{-- <td>
 
 			
-			<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
+			
 					${amountOfEq?:0 }
 				</td>
+ --}%
 				<td>
+					<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
 					${equipmentInstance.amount - (amountOfEq?:0)}
 				</td>
 
