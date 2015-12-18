@@ -53,12 +53,7 @@
 		
 	</label>
 	<div class="col-sm-10">
-		<g:if test="${!accountInstance}">
-		<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="${com.swd.Role?.findByAuthority(com.swd.AccountRole?.findByAccount(accountInstance).role).id}" class="many-to-one chosen-select" style="width:100%;"/>
-	</g:if>
-	<g:else>
-		<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="" class="many-to-one chosen-select" style="width:100%;"/>
-	</g:else>
+		<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" 	optionKey="id" value="${roleId}" class="many-to-one chosen-select" style="width:100%;"/>
 	</div>
 </div>
 

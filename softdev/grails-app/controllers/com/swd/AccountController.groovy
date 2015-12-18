@@ -53,7 +53,7 @@ class AccountController {
     }
 
     def edit(Account accountInstance) {
-        respond accountInstance
+        respond accountInstance, model:[roleId: Role?.findByAuthority(com.swd.AccountRole?.findByAccount(accountInstance).role).id]
     }
 
     @Transactional
@@ -68,14 +68,17 @@ class AccountController {
             return
         }
 
-        accountInstance.save flush:true
+        AccountRole.executeUpdate("update AccountRole ar set ar.role=:r_id where ar.account=:user", [r_id: Role.get(roleId), user: accountInstance])
+        // return 
+        // accountInstance.save flush:true
 
-        def rid = AccountRole.findByAccount(accountInstance).id
-        def accountRole = AccountRole.findByAccount(accountInstance)
-        log.debug rid
-        accountRole.role = Role.get(roleId)
-        log.debug "---->"+Role.get(roleId)
-        accountRole.save()
+        // def rid = AccountRole.findByAccount(accountInstance).id
+        // def accountRole = AccountRole.findByAccount(accountInstance)
+        // log.debug rid
+        // accountRole.role = Role.get(roleId)
+        // log.debug "---->"+Role.get(roleId)
+        // accountRole.save()
+
 
         request.withFormat {
             form multipartForm {
@@ -93,7 +96,7 @@ class AccountController {
             notFound()
             return
         }
-        
+
         def accountRole = AccountRole.findByAccount(accountInstance)
         accountRole.delete flush:true
 
