@@ -54,7 +54,7 @@ def requistionAdded(){
         def amountOfEq = equipmentLists.find{it.id == matchingInstance.equipment.id}?.amount
         def eq = Equipment.get(matchingInstance.equipment.id).amount
         if(eq < matchingInstance.amount){
-             flash.message = message(code: 'default.errorMoreTotal.message', default: 'EROR')
+             flash.message = message(code: 'default.errorMoreTotal.message', default: 'More Value having now')
              redirect controller: "matching", action: "create" , id:matchingInstance.requistion.id
              return
         }
@@ -64,7 +64,7 @@ def requistionAdded(){
         //     return
         // }
         if(matchingInstance.amount<=0){
-            flash.message = message(code: 'default.errorCreate.message', default: 'EROR')
+            flash.message = message(code: 'default.errorCreate.message', default: 'Value illigal')
             redirect controller: "matching", action: "create" , id:matchingInstance.requistion.id
             return
         }
