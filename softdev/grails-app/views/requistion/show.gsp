@@ -11,8 +11,12 @@
 		<div id="show-requistion" class="content scaffold-show" role="main">
 			<h3><g:message code="default.show.label" args="[entityName]" /></h3>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          ${flash.message}
+        </div>
+
+      </g:if>
 			<dl class="dl-horizontal">
             <dt class="fieldcontain">
                <span id="approved-label" class="property-label"><g:message code="requistion.approved.label" default="Approved" /></span>
