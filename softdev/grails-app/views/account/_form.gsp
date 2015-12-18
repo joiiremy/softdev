@@ -29,6 +29,21 @@
 
 </div>
 
+%{-- ${com.swd.Role.findByAuthority(com.swd.AccountRole.findByAccount(accountInstance).role).id} --}%
+<g:if test="${!accountInstance}">
+	<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="${com.swd.Role?.findByAuthority(com.swd.AccountRole?.findByAccount(accountInstance).role).id}" class="many-to-one chosen-select" style="width:100%;"/>
+</g:if>
+<g:else>
+	<g:select id="role" name="roleId" from="${com.swd.Role.list()}" optionValue="${title}" optionKey="id" value="" class="many-to-one chosen-select" style="width:100%;"/>
+</g:else>
+
+
+<script type="text/javascript">
+$(document).ready( function(){
+  	$(".chosen-select").chosen({no_results_text: "Oops, nothing found!"});     
+});
+</script>
+
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'accountLocked', 'error')} ">
 	<label for="accountLocked">
 		<g:message code="account.accountLocked.label" default="Account Locked" />

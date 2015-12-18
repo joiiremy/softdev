@@ -24,7 +24,10 @@ class AccountController {
     }
 
     @Transactional
-    def save(Account accountInstance) {
+    def save(Account accountInstance,Integer roleId) {
+
+        log.debug roleId
+
         if (accountInstance == null) {
             notFound()
             return
@@ -36,6 +39,9 @@ class AccountController {
         }
 
         accountInstance.save flush:true
+
+        def accountRole = new AccountRole(account:accountInstance, role:Role.load(roleId))
+        accountRole.save()
 
         request.withFormat {
             form multipartForm {
@@ -51,7 +57,7 @@ class AccountController {
     }
 
     @Transactional
-    def update(Account accountInstance) {
+    def update(Account accountInstance,Integer roleId ) {
         if (accountInstance == null) {
             notFound()
             return
@@ -63,6 +69,13 @@ class AccountController {
         }
 
         accountInstance.save flush:true
+
+        def rid = AccountRole.findByAccount(accountInstance).id
+        def accountRole = AccountRole.findByAccount(accountInstance)
+        log.debug rid
+        accountRole.role = Role.get(roleId)
+        log.debug "---->"+Role.get(roleId)
+        accountRole.save()
 
         request.withFormat {
             form multipartForm {
