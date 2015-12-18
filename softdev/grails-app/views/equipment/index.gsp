@@ -48,22 +48,23 @@
 			
 			<g:set var="amountOfEq" value="${equipmentLists.find{it.id == equipmentInstance.id}?.amount}" />	
 					${amountOfEq?:0 }
-				
 				</td>
 				<td>
-					${equipmentInstance.amount - (amountOfEq?:0)} 
+					${equipmentInstance.amount - (amountOfEq?:0)}
 				</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "price")}</td>
 
 				<td>${fieldValue(bean: equipmentInstance, field: "description")}</td>
 				<td>
-					<g:set var="amountAlert" value="${equipmentInstance.amount - (amountOfEq?:0) ==0 ? true:false}" />
-					
-					<g:if test="${amountAlert}">
+					<g:set var="amountAlertEmpty" value="${equipmentInstance.amount - (amountOfEq?:0) ==0 ? true:false}" />
+					<g:set var="amountAlert" value="${equipmentInstance.amount - (amountOfEq?:0) <= 50 ? true:false}" />
+					<g:if test="${amountAlertEmpty}">
 						${message(code: 'equipment.AlertEmpty.label', default: 'Empty!!')}
 					</g:if>
-
+					<g:elseif test="${amountAlert}">
+						${message(code: 'equipment.AlertLess.label', default: 'Less!!')}
+					</g:elseif>
 				</td>
 				<td >
 					<div class="pull-right">

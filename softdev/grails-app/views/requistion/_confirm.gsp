@@ -17,6 +17,7 @@
                <span id="approved-label" class="property-label"><g:message code="requistion.approved.label" default="Approved" /></span>
             </dt>
             <dd>
+                 <g:isApproved test="${fieldValue(bean: requistionInstance, field: "approved")}"></g:isApproved>
                 <span class="property-value" aria-labelledby="approved-label"><g:formatBoolean boolean="${requistionInstance?.approved}" /></span>
             </dd>
           
@@ -43,7 +44,7 @@
                 <span id="borrower-label" class="property-label"><g:message code="requistion.borrower.label" default="Borrower" /></span>
             </dt>
             <dd>
-                <span class="property-value" aria-labelledby="borrower-label"><g:link controller="account" action="show" id="${requistionInstance?.borrower?.id}">${requistionInstance?.borrower?.encodeAsHTML()}</g:link></span>
+                <span class="property-value" aria-labelledby="borrower-label">${requistionInstance?.borrower?.name?.encodeAsHTML()}</span>
             </dd>
           </g:if>
 
@@ -92,12 +93,12 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+        <g:actionSubmit class="save btn btn-default btn-lg" data-dismiss="modal" value="${message(code: 'default.button.close.label', default: 'Close')}" />
 
           <g:if test="${params.action == 'edit'}">
-             <g:actionSubmit class="save btn btn-info btn-lg" action="update " value="${message(code: 'default.button.update.label', default: 'Update')}" />
+             <g:actionSubmit class="save btn btn-info btn-lg" action="update " value="${message(code: 'default.button.confirm.label', default: 'Update')}" />
           </g:if>
-          <g:elseif test="${params.action== 'create'}">
+          <g:elseif test="${params.action == 'create'}">
                <g:submitButton name="create" class="save btn btn-lg pull-right" value="${message(code: 'default.button.create.label', default: 'Create')}" />
           </g:elseif>
 

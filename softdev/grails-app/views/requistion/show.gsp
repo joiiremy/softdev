@@ -44,7 +44,7 @@
                 <span id="borrower-label" class="property-label"><g:message code="requistion.borrower.label" default="Borrower" /></span>
             </dt>
             <dd>
-                <span class="property-value" aria-labelledby="borrower-label"><g:link controller="account" action="show" id="${requistionInstance?.borrower?.id}">${requistionInstance?.borrower?.name?.encodeAsHTML()}</g:link></span>
+                <span class="property-value" aria-labelledby="borrower-label">${requistionInstance?.borrower?.name?.encodeAsHTML()}</span>
             </dd>
           </g:if>
 
@@ -112,6 +112,9 @@
 				<fieldset class="buttons">
 					<g:link class="btn btn-warning edit" action="edit" resource="${requistionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+           <sec:ifAnyGranted roles="ROLE_USER">
+          <g:link class="btn btn-success pull-right" controller="requistionFront" action="history"><g:message code="default.button.confirm.label" default="Confirm" /></g:link>
+          </sec:ifAnyGranted>
 				</fieldset>
 			</g:form>
 		</div>
